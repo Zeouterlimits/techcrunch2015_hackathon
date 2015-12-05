@@ -27,7 +27,7 @@ class VenueController {
     }
 
     def show(Venue venue) {
-        respond venue, model:[eventList: Event.findAllByVenue(venue.username)]
+        respond venue, model:[eventList: Event.findAllByVenue(venue.name)]
     }
 
     def create() {

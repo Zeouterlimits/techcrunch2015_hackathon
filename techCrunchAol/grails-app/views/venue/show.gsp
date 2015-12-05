@@ -21,7 +21,7 @@
             </g:if>
             <f:display bean="venue" />
             <form action="../../event/create" >
-                <button name="venue" value="${this.venue.username}">Create Event</button>
+                <button name="venue" value="${this.venue.name}">Create Event</button>
             </form>
 
             <g:form resource="${this.venue}" method="DELETE">
