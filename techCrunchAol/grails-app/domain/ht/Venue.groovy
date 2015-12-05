@@ -7,6 +7,7 @@ class Venue {
     String name;
     String profilePicPath;
     String phoneNumber;
+    String email;
 
     // Map API object?
     String location;

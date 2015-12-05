@@ -6,6 +6,19 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class VenueController {
 
+    def beforeInterceptor = [action:this.&checkUser,except:
+            ['index','list','show']]
+
+    //def scaffold = true
+
+    def checkUser() {
+        if(!session.user) {
+// i.e. user not logged in
+            redirect(controller:'user',action:'login')
+            return false
+        }
+    }
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
