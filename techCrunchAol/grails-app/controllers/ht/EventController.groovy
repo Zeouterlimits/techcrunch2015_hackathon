@@ -109,7 +109,7 @@ class EventController {
             return
         }
         //hardcoded artist ID , replace 1 with current Artist's ID from session
-        event.artists.add(Artist.get(1))
+        event.appliedArtists.add(Artist.get(1))
 
         request.withFormat {
             form multipartForm {
