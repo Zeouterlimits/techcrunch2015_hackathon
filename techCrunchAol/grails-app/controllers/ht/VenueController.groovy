@@ -27,7 +27,7 @@ class VenueController {
     }
 
     def show(Venue venue) {
-        respond venue
+        respond venue, model:[eventList: Event.listOrderByStart_time()]
     }
 
     def create() {

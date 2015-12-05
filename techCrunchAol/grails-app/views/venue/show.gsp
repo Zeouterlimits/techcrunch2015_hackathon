@@ -23,6 +23,7 @@
             <form action="../../event/create" >
                 <button name="venue" value="${this.venue.username}">Create Event</button>
             </form>
+
             <g:form resource="${this.venue}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.venue}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
@@ -30,5 +31,25 @@
                 </fieldset>
             </g:form>
         </div>
+         <h2>Your Upcoming events</h2>
+            <div class="venueArtistList">
+                <ul class="list-unstyled">
+                    <g:each in="${eventList}" var="event">
+                        <li>
+                            <ul class="list-unstyled">
+                                <li class="eventTitle">
+                                    ${event.title},
+                                </li>
+                                <li class="eventLocation">
+                                    ${event.venue} - ${event.location}
+                                </li>
+                                <li class="eventDate">
+                                    ${event.start_time} - ${event.end_time}
+                                </li>
+                            </ul>
+                        </li>
+                    </g:each>
+                </ul>
+            </div>
     </body>
 </html>
