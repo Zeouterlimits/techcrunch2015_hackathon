@@ -14,7 +14,7 @@ class ArtistController {
     }
 
     def show(Artist artist) {
-        respond artist, model:[eventList: Event.listOrderByStart_time()]
+        respond artist, model:[eventList: Event.listOrderByStart_time(), venueList: Venue.findAll()]
     }
 
     def create() {
