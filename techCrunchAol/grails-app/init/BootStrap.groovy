@@ -17,8 +17,7 @@ class BootStrap {
                 location: "Dublin",
                 start_time: now + 1,//+24hrs
                 end_time: now + 2,
-                appliedArtists: [a1],
-                confirmedArtists: [a2]
+                confirmedArtists: [a2, a1]
 
         ).save(failOnError: true)
 

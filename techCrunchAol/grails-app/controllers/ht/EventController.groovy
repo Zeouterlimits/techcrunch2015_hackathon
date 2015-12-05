@@ -109,7 +109,9 @@ class EventController {
             return
         }
         //hardcoded artist ID , replace 1 with current Artist's ID from session
-        event.appliedArtists.add(Artist.get(1))
+        Artist artist = Artist.get(1);
+        
+        event.appliedArtists.add(artist)
 
         request.withFormat {
             form multipartForm {
@@ -133,8 +135,11 @@ class EventController {
             respond event.errors, view:'edit'
             return
         }
-        event.appliedArtists.remove(Artist.get(params.int('artistID')))
-        event.confirmedArtists.add(Artist.get(params.int('artistID')))
+        def artist = Artist.get(params.int('artistID'));
+        
+        event.appliedArtists.remove(artist)
+        
+        event.confirmedArtists.add(artist)
 
         request.withFormat {
             form multipartForm {
@@ -158,7 +163,11 @@ class EventController {
             respond event.errors, view:'edit'
             return
         }
-        event.confirmedArtists.remove(Artist.get(params.int('artistID')))
+        
+        def artist = Artist.get(params.int('artistID'));
+        
+        event.confirmedArtists.remove(artist)
+      
 
         request.withFormat {
             form multipartForm {

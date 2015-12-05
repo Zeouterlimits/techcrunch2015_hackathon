@@ -28,6 +28,49 @@
                 </fieldset>
             </g:form>
         </div>
+        
+                <h2>Your Upcoming Events</h2>
+                    <div class="eventArtistList">
+                        <ul class="list-unstyled">
+                            <g:each in="${confirmedEvents}" var="event">
+                                <li>
+                                    <ul class="list-unstyled">
+                                        <li class="eventTitle">
+                                            <a href="/event/show/${event.id}">${event.title}</a>,
+                                        </li>
+                                        <li class="eventLocation">
+                                            ${event.venue} - ${event.location}
+                                        </li>
+                                        <li class="eventDate">
+                                            ${event.start_time} - ${event.end_time}
+                                        </li>
+                                    </ul>
+                                </li>
+                            </g:each>
+                        </ul>
+                    </div>
+                    
+                <h2>Events You Have Applied For</h2>
+                    <div class="eventArtistList">
+                        <ul class="list-unstyled">
+                            <g:each in="${appliedEvents}" var="event">
+                                <li>
+                                    <ul class="list-unstyled">
+                                        <li class="eventTitle">
+                                            <a href="/event/show/${event.id}">${event.title}</a>,
+                                        </li>
+                                        <li class="eventLocation">
+                                            ${event.venue} - ${event.location}
+                                        </li>
+                                        <li class="eventDate">
+                                            ${event.start_time} - ${event.end_time}
+                                        </li>
+                                    </ul>
+                                </li>
+                            </g:each>
+                        </ul>
+                    </div>
+                    
         <h2>Events Looking For You</h2>
                     <div class="eventArtistList">
                         <ul class="list-unstyled">
