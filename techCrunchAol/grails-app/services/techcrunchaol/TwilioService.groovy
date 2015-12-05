@@ -23,9 +23,11 @@ class TwilioService {
         params.add(new BasicNameValuePair("From", "+18704554152"))
         params.add(new BasicNameValuePair("Body", msg.body ?: "default body"))
 
+        println 'sending...'
+        params.each { println it }
+
         MessageFactory messageFactory = client.getAccount().getMessageFactory()
         Message message = messageFactory.create(params)
-        println 'sending...'
         message.getSid()
 
     }

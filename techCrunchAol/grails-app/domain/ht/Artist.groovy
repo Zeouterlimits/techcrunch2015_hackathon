@@ -16,7 +16,7 @@ class Artist {
     static hasMany = [favouriteArtists: Artist, favouriteGenre: Genre];
 
 
-    String toString() { "$email" }
+    String toString() {name }
 
     static constraints =
             {

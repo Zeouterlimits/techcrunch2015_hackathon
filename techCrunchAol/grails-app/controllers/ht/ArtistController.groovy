@@ -16,7 +16,12 @@ class ArtistController {
     }
 
     def show(Artist artist) {
-        respond artist, model:[eventList: Event.listOrderByStart_time()]
+        respond artist,
+        model:[eventList: Event.listOrderByStart_time(), 
+               venueList: Venue.findAll(),
+               appliedEvents: Event.findAll("from Event where ? in elements(appliedArtists)", [artist]),
+               confirmedEvents: Event.findAll("from Event where ? in elements(confirmedArtists)", [artist])
+        ]
     }
 
     def create() {
