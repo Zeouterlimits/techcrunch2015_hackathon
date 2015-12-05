@@ -66,6 +66,10 @@ grails:
                 taglib: none
                 staticparts: none
 ---
+security:
+    user:
+        password: pass
+---
 hibernate:
     cache:
         queries: false
