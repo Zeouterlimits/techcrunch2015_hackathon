@@ -6,8 +6,8 @@ class BootStrap {
 
     def init = { servletContext ->
 
-        def a1 = new Artist(username: "test", name: "U2", profilePicPath: "C:/wtf.png", phoneNumber: "353860567862", location: "Dublin", email: "u2@cayman.com", password: "password").save()
-        def a2 = new Artist(username: "nickeback", name: "Not Nickleback", profilePicPath: "C:/wtf.png", phoneNumber: "353860567862", location: "Dublin", email: "nickleback@cayman.com", password: "password").save()
+        def a1 = new Artist(username: "test", name: "U2", profilePicPath: "/assets/u2_artist_picture.jpg", phoneNumber: "353860567862", location: "Dublin", email: "u2@cayman.com", password: "password").save()
+        def a2 = new Artist(username: "nickeback", name: "Not Nickleback", profilePicPath: "/assets/u2_artist_picture.jpg", phoneNumber: "353860567862", location: "Dublin", email: "nickleback@cayman.com", password: "password").save()
 
         def v1 = new Venue(username: "brazenHeadManager", name: "Brazen Head", profilePicPath: "C:/wtf.png", phoneNumber: "353860567862", location: "Dublin", email: "brazenHead@cayman.com", password: "password").save()
         def v2 = new Venue(username: "arthursManager", name: "Arthurs", profilePicPath: "C:/wtf.png", phoneNumber: "353860567862", location: "Dublin", email: "arthurs@cayman.com", password: "password").save()
