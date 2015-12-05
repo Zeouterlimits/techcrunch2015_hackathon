@@ -4,91 +4,91 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class BandController {
+class ArtistController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Band.list(params), model:[bandCount: Band.count()]
+        respond Artist.list(params), model:[artistCount: Artist.count()]
     }
 
-    def show(Band band) {
-        respond band
+    def show(Artist artist) {
+        respond artist
     }
 
     def create() {
-        respond new Band(params)
+        respond new Artist(params)
     }
 
     @Transactional
-    def save(Band band) {
-        if (band == null) {
+    def save(Artist artist) {
+        if (artist == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (band.hasErrors()) {
+        if (artist.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond band.errors, view:'create'
+            respond artist.errors, view:'create'
             return
         }
 
-        band.save flush:true
+        artist.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'band.label', default: 'Band'), band.id])
-                redirect band
+                flash.message = message(code: 'default.created.message', args: [message(code: 'artist.label', default: 'Artist'), artist.id])
+                redirect artist
             }
-            '*' { respond band, [status: CREATED] }
+            '*' { respond artist, [status: CREATED] }
         }
     }
 
-    def edit(Band band) {
-        respond band
+    def edit(Artist artist) {
+        respond artist
     }
 
     @Transactional
-    def update(Band band) {
-        if (band == null) {
+    def update(Artist artist) {
+        if (artist == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (band.hasErrors()) {
+        if (artist.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond band.errors, view:'edit'
+            respond artist.errors, view:'edit'
             return
         }
 
-        band.save flush:true
+        artist.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'band.label', default: 'Band'), band.id])
-                redirect band
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'artist.label', default: 'Artist'), artist.id])
+                redirect artist
             }
-            '*'{ respond band, [status: OK] }
+            '*'{ respond artist, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Band band) {
+    def delete(Artist artist) {
 
-        if (band == null) {
+        if (artist == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        band.delete flush:true
+        artist.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'band.label', default: 'Band'), band.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'artist.label', default: 'Artist'), artist.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +98,7 @@ class BandController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'band.label', default: 'Band'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'artist.label', default: 'Artist'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
