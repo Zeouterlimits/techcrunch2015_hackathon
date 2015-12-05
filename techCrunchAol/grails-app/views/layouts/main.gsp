@@ -15,8 +15,17 @@
         <g:layoutHead/>
     </head>
     <body>
-        <div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
-        <g:layoutBody/>
+
+    <div id="nav">
+        [
+        <g:link uri="/">Home</g:link> |
+        <g:link controller="artist">I am an Artist</g:link> |
+        <g:link controller="venue">Venue owner</g:link>
+        ]
+    </div>
+
+
+    <g:layoutBody/>
         <div class="footer" role="contentinfo"></div>
         <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
     </body>
