@@ -21,11 +21,11 @@
             </g:if>
             <f:display bean="event" />
 
-            <sec:isLoggedIn>
+            <security:isLoggedIn>
 
                 Can only see this if logged in
 
-            </sec:isLoggedIn>
+            </security:isLoggedIn>
 
             <sec:ifAnyGranted roles="VENUE">
                 <g:form resource="${this.event}" method="DELETE">

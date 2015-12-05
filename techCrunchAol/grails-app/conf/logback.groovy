@@ -23,3 +23,4 @@ if (Environment.isDevelopmentMode() && targetDir) {
 }
 
 logger('org.springframework.boot.autoconfigure.security', INFO)
+logger('org.springframework', INFO)

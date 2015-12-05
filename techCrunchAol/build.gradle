@@ -67,7 +67,7 @@ dependencies {
     compile "com.twilio.sdk:twilio-java-sdk:5.6.0"
 
     compile "org.springframework.boot:spring-boot-starter-security"
-    compile "org.grails.plugins:spring-security-core:3.0.0.M2"
+    compile "org.springframework.security:spring-security-taglibs"
 
     runtime "org.grails.plugins:asset-pipeline"
 
