@@ -42,7 +42,7 @@
                                             ${event.venue} - ${event.location}
                                         </li>
                                         <li class="eventDate">
-                                            ${event.start_time} - ${event.end_time}
+                                            <g:formatDate date="${event.start_time}" type="both" style="SHORT"/> - <g:formatDate date="${event.end_time}" type="both" style="SHORT"/>
                                         </li>
                                     </ul>
                                 </li>
@@ -63,8 +63,7 @@
                                             ${event.venue} - ${event.location}
                                         </li>
                                         <li class="eventDate">
-                                            ${event.start_time} - ${event.end_time}
-                                        </li>
+                                            <g:formatDate date="${event.start_time}" type="both" style="SHORT"/> - <g:formatDate date="${event.end_time}" type="both" style="SHORT"/>                                        </li>
                                     </ul>
                                 </li>
                             </g:each>
@@ -89,8 +88,7 @@
                                              ${event.venue} </a> - ${event.location}
                                         </li>
                                         <li class="eventDate">
-                                            ${event.start_time} - ${event.end_time}
-                                        </li>
+                                            <g:formatDate date="${event.start_time}" type="both" style="SHORT"/> - <g:formatDate date="${event.end_time}" type="both" style="SHORT"/>                                        </li>
                                     </ul>
                                 </li>
                             </g:each>
