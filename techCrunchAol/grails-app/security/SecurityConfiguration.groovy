@@ -23,27 +23,18 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+
         http
                 .authorizeRequests()
-                .antMatchers('/venue/**').hasAnyRole('VENUE', 'ARTIST')
-                .antMatchers('/artist/**').hasAnyRole('VENUE', 'ARTIST')
-                .antMatchers('/').permitAll()
+//                .antMatchers('/venue/**').permitAll()
+//                .antMatchers('/artist/**').permitAll()
+//                .antMatchers('/event/**').permitAll()
+                .antMatchers('/**').permitAll()
                 .and()
                 .formLogin().permitAll()
                 .and()
                 .logout().permitAll()
     }
-
-//    @Bean
-//    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
-//        final Properties users = new Properties();
-//        users.put("artist","pass","ARTIST", enabled); //add whatever other user you need
-//        users.put("venue","pass", "VENUE", enabled);
-//        return new InMemoryUserDetailsManager(users);
-//    }
-
-    //<-- --="" .inmemoryauthentication="" .withuser="" auth="" code="" configureglobal="" end="" exception="" in="" of="" password="" previous="" public="" roles="" snippet="" throws="" user="" uthenticationmanagerbuilder="" utowired="" void="">
-//    .and()
-//    .withUser('admin').password('admin').roles('ADMIN');
 
 }
