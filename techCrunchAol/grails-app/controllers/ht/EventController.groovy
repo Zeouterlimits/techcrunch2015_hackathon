@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class EventController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", apply: "PUT"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", apply: "PUT", approve: "PUT",remove: "PUT"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -120,6 +120,55 @@ class EventController {
         }
     }
 
+    @Transactional
+    def approve(Event event, String artistID) {
+        if (event == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        if (event.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond event.errors, view:'edit'
+            return
+        }
+        event.appliedArtists.remove(Artist.get(params.int('artistID')))
+        event.confirmedArtists.add(Artist.get(params.int('artistID')))
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'event.label', default: 'Event'), event.id])
+                redirect event
+            }
+            '*'{ respond event, [status: OK] }
+        }
+    }
+
+    @Transactional
+    def remove(Event event, String artistID) {
+        if (event == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        if (event.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond event.errors, view:'edit'
+            return
+        }
+        event.confirmedArtists.remove(Artist.get(params.int('artistID')))
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'event.label', default: 'Event'), event.id])
+                redirect event
+            }
+            '*'{ respond event, [status: OK] }
+        }
+    }
+    
     protected void notFound() {
         request.withFormat {
             form multipartForm {
