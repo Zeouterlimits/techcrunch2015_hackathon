@@ -2,6 +2,7 @@ package ht
 
 class Artist {
 
+    String id;
     String username;
     String password;
     String name;

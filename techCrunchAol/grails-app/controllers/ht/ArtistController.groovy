@@ -8,6 +8,8 @@ class ArtistController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def hummService
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Artist.list(params), model:[artistCount: Artist.count()]
@@ -19,6 +21,13 @@ class ArtistController {
 
     def create() {
         respond new Artist(params)
+    }
+
+    def searchHumm() {
+        render hummService.getArtistList(params.name)
+    }
+    def createHumm(){
+
     }
 
     @Transactional
