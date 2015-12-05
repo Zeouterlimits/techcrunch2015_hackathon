@@ -28,5 +28,25 @@
                 </fieldset>
             </g:form>
         </div>
+        <h2>Events Looking For You</h2>
+                    <div class="eventArtistList">
+                        <ul class="list-unstyled">
+                            <g:each in="${eventList}" var="event">
+                                <li>
+                                    <ul class="list-unstyled">
+                                        <li class="eventTitle">
+                                            ${event.title},
+                                        </li>
+                                        <li class="eventLocation">
+                                            ${event.venue} - ${event.location}
+                                        </li>
+                                        <li class="eventDate">
+                                            ${event.start_time} - ${event.end_time}
+                                        </li>
+                                    </ul>
+                                </li>
+                            </g:each>
+                        </ul>
+                    </div>
     </body>
 </html>
