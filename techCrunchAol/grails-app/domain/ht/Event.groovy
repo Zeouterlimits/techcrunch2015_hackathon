@@ -4,7 +4,7 @@ class Event {
 
      String title;
      String location;
-     ArrayList<String> acts;
+     static hasMany = [artists: Artist]
      Date start_time;
      Date end_time;
 

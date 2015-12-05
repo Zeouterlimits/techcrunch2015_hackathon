@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class EventController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", apply: "PUT"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -92,6 +92,31 @@ class EventController {
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def apply(Event event) {
+        if (event == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        if (event.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond event.errors, view:'edit'
+            return
+        }
+        //hardcoded artist ID , replace 1 with current Artist's ID from session
+        event.artists.add(Artist.get(1))
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'event.label', default: 'Event'), event.id])
+                redirect event
+            }
+            '*'{ respond event, [status: OK] }
         }
     }
 
