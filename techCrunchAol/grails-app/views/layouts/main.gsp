@@ -109,8 +109,11 @@
     <!-- Footer -->
     <footer>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-11">
                 <p>Copyright &copy; Hackers</p>
+            </div>
+            <div class="col-lg-1">
+                <g:link controller="twilio">test sms</g:link>
             </div>
         </div>
     </footer>
