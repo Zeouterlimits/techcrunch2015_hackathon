@@ -38,7 +38,7 @@
                         <li>
                             <ul class="list-unstyled">
                                 <li class="eventTitle">
-                                    ${event.title},
+                                    <a href="/event/show/${event.id}">${event.title}</a>,
                                 </li>
                                 <li class="eventLocation">
                                     ${event.venue} - ${event.location}
