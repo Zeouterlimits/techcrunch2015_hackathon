@@ -1,8 +1,7 @@
 package ht
 
-class User {
+class Band {
     String name
-    def somethingElse
 
     static constraints = {
     }
