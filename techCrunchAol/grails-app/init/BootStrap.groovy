@@ -1,6 +1,9 @@
 import ht.Artist
 import ht.Event
 import ht.Venue
+import org.example.SecRole
+import org.example.SecUser
+import org.example.SecUserSecRole
 
 class BootStrap {
 
@@ -20,6 +23,18 @@ class BootStrap {
                 confirmedArtists: [a2, a1]
 
         ).save(failOnError: true)
+
+        def adminRole = new SecRole(authority: 'ROLE_ADMIN').save(flush: true)
+        def userRole = new SecRole(authority: 'ROLE_USER').save(flush: true)
+
+        def testUser = new SecUser(username: 'admin', enabled: true, password: 'admin')
+        testUser.save(flush: true)
+
+        SecUserSecRole.create testUser, adminRole, true
+
+        assert SecUser.count() == 1
+        assert SecRole.count() == 2
+        assert SecUserSecRole.count() == 1
 
 
     }

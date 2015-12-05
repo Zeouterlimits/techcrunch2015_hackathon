@@ -55,7 +55,6 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.springframework.boot:spring-boot-starter-tomcat"
-    compile "org.springframework.boot:spring-boot-starter-security"
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
 
@@ -64,6 +63,8 @@ dependencies {
     compile "org.hibernate:hibernate-ehcache"
     compile "org.grails.plugins:scaffolding"
     compile "com.twilio.sdk:twilio-java-sdk:5.6.0"
+
+    compile 'org.grails.plugins:spring-security-core:3.0.0.M2'
 
     runtime "org.grails.plugins:asset-pipeline"
 
