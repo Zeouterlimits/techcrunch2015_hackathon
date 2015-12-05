@@ -27,10 +27,10 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-//                .antMatchers('/venue/**').permitAll()
-//                .antMatchers('/artist/**').permitAll()
-//                .antMatchers('/event/**').permitAll()
-                .antMatchers('/**').permitAll()
+                .antMatchers('/venue/**').hasAnyRole("ARTIST", "VENUE")
+                .antMatchers('/artist/**').hasAnyRole("ARTIST", "VENUE")
+                .antMatchers('/event/**').hasAnyRole("ARTIST", "VENUE")
+                .antMatchers('/').permitAll()
                 .and()
                 .formLogin().permitAll()
                 .and()

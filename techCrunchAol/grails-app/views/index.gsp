@@ -83,5 +83,9 @@
 
 search for venue, search for Artist
 
+<p>
+<sec:ifLoggedIn>logged in true</sec:ifLoggedIn><br/>
+<sec:ifNotLoggedIn>logged in false</sec:ifNotLoggedIn><br/>
+</p>
 </body>
 </html>

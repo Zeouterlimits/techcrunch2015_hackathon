@@ -20,22 +20,30 @@
             <div class="message" role="status">${flash.message}</div>
             </g:if>
             <f:display bean="event" />
-            
-            <!--if venue-->
-            <g:form resource="${this.event}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${this.event}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                   
-                </fieldset>
-            </g:form>
-            
-            <!--if artist-->
-            <g:form resource="${this.event}" method="PUT" action="apply">
-                <fieldset class="buttons">
-                   <input type="submit" value="${message(code: 'default.button.apply.label', default: 'Apply')}" onclick="return confirm('${message(code: 'default.button.apply.confirm.message', default: 'Are you sure?')}');" />             
-                </fieldset>
-            </g:form>
+
+            <sec:isLoggedIn>
+
+                Can only see this if logged in
+
+            </sec:isLoggedIn>
+
+            <sec:ifAnyGranted roles="VENUE">
+                <g:form resource="${this.event}" method="DELETE">
+                    <fieldset class="buttons">
+                        <g:link class="edit" action="edit" resource="${this.event}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                        <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+
+                    </fieldset>
+                </g:form>
+            </sec:ifAnyGranted>
+
+            <sec:ifAnyGranted roles="ARTIST">
+                <g:form resource="${this.event}" method="PUT" action="apply">
+                    <fieldset class="buttons">
+                        <input type="submit" value="${message(code: 'default.button.apply.label', default: 'Apply')}" onclick="return confirm('${message(code: 'default.button.apply.confirm.message', default: 'Are you sure?')}');" />
+                    </fieldset>
+                </g:form>
+            </sec:ifAnyGranted>
              
         
         </div>
