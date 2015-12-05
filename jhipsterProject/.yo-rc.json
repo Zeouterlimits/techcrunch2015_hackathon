@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "aolDubTechCrunch2015",
+    "packageName": "com.aol.dublin.techcrunch",
+    "packageFolder": "com/aol/dublin/techcrunch",
+    "authenticationType": "xauth",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "useSass": false,
+    "buildTool": "gradle",
+    "frontendBuilder": "gulp",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "4ad952e18683dd36ff78546ba9668559978a5ef5",
+    "testFrameworks": [
+      "protractor"
+    ]
+  }
+}
