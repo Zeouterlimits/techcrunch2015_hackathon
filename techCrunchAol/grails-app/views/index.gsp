@@ -82,10 +82,6 @@
 <h1>Fan landing page</h1>
 
 search for venue, search for Artist
-<div>
-    <g:link controller="artist">I am an Artist</g:link>
-    <g:link controller="venue">Venue owner</g:link>
-</div>
 
 </body>
 </html>
