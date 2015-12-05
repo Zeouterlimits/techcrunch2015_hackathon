@@ -28,7 +28,8 @@ if (typeof jQuery !== 'undefined') {
         self.x = $("#demo");
         self.key = "rfcYFGTiHFcPCCc3nORTNEDnHuBpte9n";
         self.searchBaseUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=" + self.key;
-        self.map;
+        self.mapContainer = $("#map");
+        self.map = null;
 
 
         self.getGeoSuccess = function(position){
@@ -96,12 +97,14 @@ if (typeof jQuery !== 'undefined') {
                 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
                 maxZoom: 18,
                 id: 'your.mapbox.project.id',
-                accessToken: 'your.mapbox.public.access.token'
+                accessToken: 'rfcYFGTiHFcPCCc3nORTNEDnHuBpte9n'
             }).addTo(map);
 
             map.on('click', self.onMapClick);
 
             self.initMarker(position);
+
+            self.printCoords(position.coords);
 
         }
 
@@ -120,9 +123,18 @@ if (typeof jQuery !== 'undefined') {
 
         self.updateMap = function(coords){
 
-            map.panTo(new L.LatLng(coords.lat, coords.lng));
+            self.map.panTo(new L.LatLng(coords.lat, coords.lng));
             self.marker.setLatLng(coords);
+            self.printCoords(coords);
 
+        }
+
+        self.printCoords = function(coords){
+            if(coords.lat == undefined){
+                $("#demo").text("Lat = " + coords.latitude + " & Long = " + coords.longitude );
+            }else{
+                $("#demo").text("Lat = " + coords.lat + " & Long = " + coords.lng );
+            }
         }
 
 
@@ -138,11 +150,13 @@ if (typeof jQuery !== 'undefined') {
                     data = JSON.parse(data);
                     coords = data.results[0].locations[0].latLng;
                     console.log( "lat = " + coords.lat + " and longitude = " + coords.lng );
+
+                    if(self.map == null){
+                        position = {coords : {latitute: coords.lat, longitute : coords.lng}}
+                        console.dir(position);
+                        self.initMap(position)
+                    }
                     self.updateMap(coords);
-
-                    //need to pump this back into the leaflet map UI
-
-
                 } else {
                     alert("empty data")
                 }

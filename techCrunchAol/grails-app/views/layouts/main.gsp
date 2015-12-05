@@ -102,25 +102,6 @@
             <g:layoutBody/>
 
 
-            <br><br><br>
-
-
-            <button id="get_location">Find my Geo location</button>
-            <p id="demo"></p>
-            <br>
-            <div>Enter Address</div>
-            <input id="address">
-            <br>
-            <button id="search_address">Search MapQuest</button>
-
-            <br><br><br><br>
-
-
-            <div id="map" style="height:400px"></div>
-
-
-
-
             %{-- Dynamic Content Ends Here--}%
 
         </div>
