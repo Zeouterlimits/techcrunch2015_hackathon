@@ -86,6 +86,8 @@ if (typeof jQuery !== 'undefined') {
 
         self.initMap = function(position){
 
+            $("#map").height('400px');
+
             self.map = L.map('map', {
                 layers: MQ.mapLayer(),
                 center: [ position.coords.latitude, position.coords.longitude ],

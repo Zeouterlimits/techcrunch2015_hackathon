@@ -43,18 +43,9 @@
                     <input id="address">
                     <br>
                     <button id="search_address">Search MapQuest</button>
-
                     <p id="demo"></p>
 
-                    <br><br><br><br>
-
-
-                    <div id="map" style="height:400px"></div>
-
-
-
-
-
+                    <div id="map"></div>
 
                     <f:with bean="venue">
                         <f:field property="favouriteArtists"/>

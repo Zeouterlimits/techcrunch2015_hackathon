@@ -28,6 +28,54 @@
                 </fieldset>
             </g:form>
         </div>
+        
+                <h2>Your Upcoming Events</h2>
+                    <div class="eventArtistList">
+                        <ul class="list-unstyled">
+                            <g:each in="${confirmedEvents}" var="event">
+                                <li>
+                                    <ul class="list-unstyled">
+                                        <li class="eventTitle">
+                                            <a href="/event/show/${event.id}">${event.title}</a>,
+                                        </li>
+                                        <li class="eventLocation">
+                                            <g:findAll in="${venueList}" expr="it.name == event.venue">
+                                                <a href="/venue/show/${it.id}">${event.venue}</a>
+                                            </g:findAll>
+                                            - ${event.location}
+                                        </li>
+                                        <li class="eventDate">
+                                            <g:formatDate date="${event.start_time}" type="both" style="SHORT"/> - <g:formatDate date="${event.end_time}" type="both" style="SHORT"/>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </g:each>
+                        </ul>
+                    </div>
+                    
+                <h2>Events You Have Applied For</h2>
+                    <div class="eventArtistList">
+                        <ul class="list-unstyled">
+                            <g:each in="${appliedEvents}" var="event">
+                                <li>
+                                    <ul class="list-unstyled">
+                                        <li class="eventTitle">
+                                            <a href="/event/show/${event.id}">${event.title}</a>,
+                                        </li>
+                                        <li class="eventLocation">
+                                            <g:findAll in="${venueList}" expr="it.name == event.venue">
+                                                <a href="/venue/show/${it.id}">${event.venue}</a>
+                                            </g:findAll>
+                                            - ${event.location}
+                                        </li>
+                                        <li class="eventDate">
+                                            <g:formatDate date="${event.start_time}" type="both" style="SHORT"/> - <g:formatDate date="${event.end_time}" type="both" style="SHORT"/>                                        </li>
+                                    </ul>
+                                </li>
+                            </g:each>
+                        </ul>
+                    </div>
+                    
         <h2>Events Looking For You</h2>
                     <div class="eventArtistList">
                         <ul class="list-unstyled">
@@ -38,11 +86,13 @@
                                             <a href="/event/show/${event.id}">${event.title}</a>,
                                         </li>
                                         <li class="eventLocation">
-                                            ${event.venue} - ${event.location}
+                                             <g:findAll in="${venueList}" expr="it.name == event.venue">
+                                                  <a href="/venue/show/${it.id}">${event.venue}</a>
+                                             </g:findAll>
+                                             - ${event.location}
                                         </li>
                                         <li class="eventDate">
-                                            ${event.start_time} - ${event.end_time}
-                                        </li>
+                                            <g:formatDate date="${event.start_time}" type="both" style="SHORT"/> - <g:formatDate date="${event.end_time}" type="both" style="SHORT"/>                                        </li>
                                     </ul>
                                 </li>
                             </g:each>
