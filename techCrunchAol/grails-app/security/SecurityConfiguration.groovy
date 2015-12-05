@@ -14,22 +14,33 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("artist").password("pass").roles("USER");
-                //.withUser("venue").password("pass").roles("USER");
+                .withUser("artist").password("pass").roles("ARTIST");
+
+        auth
+                .inMemoryAuthentication()
+                .withUser("venue").password("pass").roles("VENUE");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers('/admin/**').hasAnyRole('ADMIN')
-                .antMatchers('/artist/**').hasAnyRole('USER', 'ADMIN')
+                .antMatchers('/venue/**').hasAnyRole('VENUE', 'ARTIST')
+                .antMatchers('/artist/**').hasAnyRole('VENUE', 'ARTIST')
                 .antMatchers('/').permitAll()
                 .and()
                 .formLogin().permitAll()
                 .and()
                 .logout().permitAll()
     }
+
+//    @Bean
+//    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+//        final Properties users = new Properties();
+//        users.put("artist","pass","ARTIST", enabled); //add whatever other user you need
+//        users.put("venue","pass", "VENUE", enabled);
+//        return new InMemoryUserDetailsManager(users);
+//    }
 
     //<-- --="" .inmemoryauthentication="" .withuser="" auth="" code="" configureglobal="" end="" exception="" in="" of="" password="" previous="" public="" roles="" snippet="" throws="" user="" uthenticationmanagerbuilder="" utowired="" void="">
 //    .and()
