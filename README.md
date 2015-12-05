@@ -1,12 +1,8 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### Techcrunch Disrupt London 2015 project ###
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Techcrunch Disrupt London 2015 project for our team (please see contributors)
 
 ### How do I get set up? ###
 
