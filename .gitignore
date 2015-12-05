@@ -3,6 +3,7 @@
 /.idea/*
 .DS_Store
 /build
+techCrunchAol/.asscache
 
 	
 Update: Since Android Studio 1.0, new projects are created with this gitignore file:
