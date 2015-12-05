@@ -7,12 +7,18 @@ class Fan {
     String name;
     String profilePicPath;
     String phoneNumber;
+    String email;
 
     // Map API object?
     String location;
 
     static hasMany = [favouriteArtists: Artist, favouriteGenre: Genre];
 
-    static constraints = {
-    }
+    String toString() { "$email" }
+
+    static constraints =
+            {
+                email(email:true)
+                password(blank:false, password:true)
+            }
 }
