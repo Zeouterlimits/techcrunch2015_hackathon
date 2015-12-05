@@ -11,3 +11,10 @@
 *= require mobile
 *= require_self
 */
+.eventArtistList .eventTitle,
+.eventArtistList .eventLocation{
+    display: inline;
+}
+.eventArtistList .eventDate{
+    color: #8C8C8C;
+}

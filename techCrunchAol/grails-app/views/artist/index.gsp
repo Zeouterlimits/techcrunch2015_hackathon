@@ -20,12 +20,22 @@
             </g:if>
             <f:table collection="${artistList}" />
 
-            <h2>Venues</h2>
-            <div class="venueList">
+            <h2>Events Looking For You</h2>
+            <div class="eventArtistList">
                 <ul class="list-unstyled">
-                    <g:each in="${venueList}" var="venue">
+                    <g:each in="${eventList}" var="event">
                         <li>
-                            ${venue.name}
+                            <ul class="list-unstyled">
+                                <li class="eventTitle">
+                                    ${event.title},
+                                </li>
+                                <li class="eventLocation">
+                                    ${event.location}
+                                </li>
+                                <li class="eventDate">
+                                    ${event.start_time} - ${event.end_time}
+                                </li>
+                            </ul>
                         </li>
                     </g:each>
                 </ul>
