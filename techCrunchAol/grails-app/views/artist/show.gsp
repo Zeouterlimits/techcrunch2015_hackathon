@@ -14,8 +14,9 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
+        <img src="../../assets/artist_picture.jpg"% height=200/>
         <div id="show-artist" class="content scaffold-show" role="main">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="${artist.name}" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -27,5 +28,25 @@
                 </fieldset>
             </g:form>
         </div>
+        <h2>Events Looking For You</h2>
+                    <div class="eventArtistList">
+                        <ul class="list-unstyled">
+                            <g:each in="${eventList}" var="event">
+                                <li>
+                                    <ul class="list-unstyled">
+                                        <li class="eventTitle">
+                                            <a href="/event/show/${event.id}">${event.title}</a>,
+                                        </li>
+                                        <li class="eventLocation">
+                                            ${event.venue} - ${event.location}
+                                        </li>
+                                        <li class="eventDate">
+                                            ${event.start_time} - ${event.end_time}
+                                        </li>
+                                    </ul>
+                                </li>
+                            </g:each>
+                        </ul>
+                    </div>
     </body>
 </html>

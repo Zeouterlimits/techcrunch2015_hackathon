@@ -20,17 +20,6 @@
             </g:if>
             <f:table collection="${artistList}" />
 
-            <h2>Venues</h2>
-            <div class="venueList">
-                <ul class="list-unstyled">
-                    <g:each in="${venueList}" var="venue">
-                        <li>
-                            ${venue.name}
-                        </li>
-                    </g:each>
-                </ul>
-            </div>
-
             <div class="pagination">
                 <g:paginate total="${artistCount ?: 0}" />
             </div>
