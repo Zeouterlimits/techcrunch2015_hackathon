@@ -4,7 +4,9 @@ class Event {
 
      String title;
      String location;
-     ArrayList<String> acts;
+     static hasMany = [appliedArtists: Artist]
+     static hasMany = [confirmedArtists: Artist]
+     String venue;
      Date start_time;
      Date end_time;
 

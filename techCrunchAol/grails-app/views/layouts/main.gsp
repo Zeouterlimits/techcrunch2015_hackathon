@@ -9,10 +9,12 @@
     <meta name="author" content="">
 
     <title><g:layoutTitle default="Grails"/></title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
     <asset:stylesheet src="bootstrap.css"/>
