@@ -1,7 +1,6 @@
 package ht
 
-class Band {
-    String name
+class Artist {
 
     static constraints = {
     }
