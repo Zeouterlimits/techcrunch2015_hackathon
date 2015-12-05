@@ -30,7 +30,7 @@
                                     ${event.title},
                                 </li>
                                 <li class="eventLocation">
-                                    ${event.location}
+                                    ${event.venue} - ${event.location}
                                 </li>
                                 <li class="eventDate">
                                     ${event.start_time} - ${event.end_time}
