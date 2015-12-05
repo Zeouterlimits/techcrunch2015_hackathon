@@ -38,12 +38,10 @@
                                             <a href="/event/show/${event.id}">${event.title}</a>,
                                         </li>
                                         <li class="eventLocation">
-                                            <g:each in="${venueList}" var="venue">
-                                                <g:if test="${venue.name == event.venue}">
-                                                    <a href="/venue/show/${venue.id}">
-                                                </g:if>
-                                            </g:each>
-                                             ${event.venue} </a> - ${event.location}
+                                             <g:findAll in="${venueList}" expr="it.name == event.venue">
+                                                  <a href="/venue/show/${it.id}">${event.venue}</a>
+                                             </g:findAll>
+                                             - ${event.location}
                                         </li>
                                         <li class="eventDate">
                                             ${event.start_time} - ${event.end_time}
