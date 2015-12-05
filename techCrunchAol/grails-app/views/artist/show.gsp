@@ -39,7 +39,10 @@
                                             <a href="/event/show/${event.id}">${event.title}</a>,
                                         </li>
                                         <li class="eventLocation">
-                                            ${event.venue} - ${event.location}
+                                            <g:findAll in="${venueList}" expr="it.name == event.venue">
+                                                <a href="/venue/show/${it.id}">${event.venue}</a>
+                                            </g:findAll>
+                                            - ${event.location}
                                         </li>
                                         <li class="eventDate">
                                             ${event.start_time} - ${event.end_time}
@@ -60,7 +63,10 @@
                                             <a href="/event/show/${event.id}">${event.title}</a>,
                                         </li>
                                         <li class="eventLocation">
-                                            ${event.venue} - ${event.location}
+                                            <g:findAll in="${venueList}" expr="it.name == event.venue">
+                                                <a href="/venue/show/${it.id}">${event.venue}</a>
+                                            </g:findAll>
+                                            - ${event.location}
                                         </li>
                                         <li class="eventDate">
                                             ${event.start_time} - ${event.end_time}
