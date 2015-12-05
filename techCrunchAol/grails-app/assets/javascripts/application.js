@@ -18,3 +18,157 @@ if (typeof jQuery !== 'undefined') {
         });
     })(jQuery);
 }
+
+
+    function MapQuest(){
+
+        var self = this;
+
+        self.popup = L.popup();
+        self.x = $("#demo");
+        self.key = "rfcYFGTiHFcPCCc3nORTNEDnHuBpte9n";
+        self.searchBaseUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=" + self.key;
+        self.map;
+
+
+        self.getGeoSuccess = function(position){
+
+            self.showPosition(position);
+            self.initMap(position);
+        }
+
+        self.getGeoFailure = function(){
+            alert("failed to get geolocation");
+        }
+
+        self.getGeoLocation = function(position){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(self.getGeoSuccess,self.getGeoFailure);
+            } else {
+                self.x.text("Geolocation is not supported by this browser.");
+            }
+
+        }
+
+        self.showPosition = function(position){
+            self.x.text("Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude);
+        }
+
+        self.initMarker = function(position){
+            var LeafIcon = L.Icon.extend({
+                options: {
+                    iconSize:     [40, 40]
+                }
+            });
+
+            var greenIcon = new LeafIcon({iconUrl: '/assets/guitar-icon.png'});
+            self.marker = L.marker([position.coords.latitude, position.coords.longitude], {icon: greenIcon, draggable:true}).addTo(self.map);
+
+            self.marker.on('dragend', function(){
+                alert(self.marker.target._latlng);
+            })
+
+            self.marker.addTo(self.map);
+
+        }
+
+        self.initCircle = function(){
+
+            var circle = L.circle([51.508, -0.11], 500, {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5
+            }).addTo(map);
+        }
+
+
+        self.initMap = function(position){
+
+            self.map = L.map('map', {
+                layers: MQ.mapLayer(),
+                center: [ position.coords.latitude, position.coords.longitude ],
+                zoom: 12
+            });
+
+
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                maxZoom: 18,
+                id: 'your.mapbox.project.id',
+                accessToken: 'your.mapbox.public.access.token'
+            }).addTo(map);
+
+            map.on('click', self.onMapClick);
+
+            self.initMarker(position);
+
+        }
+
+        self.onMapClick = function(e) {
+            self.popup.setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(map);
+        }
+
+        self.mapClickPopup = function(e){
+            self.popup.setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(map);
+        }
+
+
+        self.updateMap = function(coords){
+
+            map.panTo(new L.LatLng(coords.lat, coords.lng));
+            self.marker.setLatLng(coords);
+
+        }
+
+
+
+
+        self.search = function(){
+
+            url = self.searchBaseUrl + "&location=" + $("#address").val();
+
+
+            $.get(url, function (data) {
+                if (data !== "") {
+                    data = JSON.parse(data);
+                    coords = data.results[0].locations[0].latLng;
+                    console.log( "lat = " + coords.lat + " and longitude = " + coords.lng );
+                    self.updateMap(coords);
+
+                    //need to pump this back into the leaflet map UI
+
+
+                } else {
+                    alert("empty data")
+                }
+            }, 'html').fail(function (jqXHR, textStatus, errorThrown) {
+                console.log("Season Load Ajax failed: " + textStatus + ", " + errorThrown.toString());
+            }).always(function(){
+                // always remove loading etc
+            });
+
+        }
+
+
+
+        $(document).ready(function(){
+
+            $("#get_location").click(function(){
+                self.getGeoLocation();
+            });
+
+            $("#search_address").click(self.search);
+
+        });
+    }
+
+
+    var mapquest = MapQuest();
+
+
+

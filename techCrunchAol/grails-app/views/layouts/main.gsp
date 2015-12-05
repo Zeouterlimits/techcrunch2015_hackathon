@@ -15,6 +15,15 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
+
+    %{--include leaflet --}%
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="http://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=rfcYFGTiHFcPCCc3nORTNEDnHuBpte9n"></script>
+
+
+    %{--end leaflet--}%
+
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
     <asset:stylesheet src="bootstrap.css"/>
@@ -91,6 +100,22 @@
 
             <g:layoutBody/>
 
+
+            <br><br><br>
+
+
+            <button id="get_location">Find my Geo location</button>
+            <p id="demo"></p>
+            <br>
+            <div>Enter Address</div>
+            <input id="address">
+            <br>
+            <button id="search_address">Search MapQuest</button>
+
+            <br><br><br><br>
+
+
+            <div id="map" style="height:400px"></div>
 
 
 
