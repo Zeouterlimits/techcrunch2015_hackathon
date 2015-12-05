@@ -10,7 +10,7 @@ class ArtistController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Artist.list(params), model:[artistCount: Artist.count()]
+        respond Artist.list(params), model:[artistCount: Artist.count(), venueList: Venue.list()]
     }
 
     def show(Artist artist) {
