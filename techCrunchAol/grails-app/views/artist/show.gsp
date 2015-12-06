@@ -167,5 +167,8 @@
                             </g:each>
                         </ul>
                     </div>
+
+
+    <div id="proxmap" data-map_width="600" data-map_height="400"></div>
     </body>
 </html>

@@ -17,6 +17,8 @@ class BootStrap {
                 location: "Queen Elizabeth Olympic Park, London",
                 start_time: now + 1,//+24hrs
                 end_time: now + 2,
+                latitude: "51.54569452517835",
+                longitude: "-0.02300262451171875",
                 confirmedArtists: [a2, a1]
 
         ).save(failOnError: true)
