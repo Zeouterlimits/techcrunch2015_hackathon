@@ -30,3 +30,9 @@
     float: left; 
     padding-left: 35px;
 }
+
+.venueContainer{
+    height: 300px;
+    width: 600px;
+    margin: 35px;
+}

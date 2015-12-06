@@ -64,11 +64,12 @@
     
 </ol>
 
-            <div id="map"></div>
+            <div class="venueContainer" id="map"></div>
 
 
 
         </div>
+        <div class="venueContainer">
          <h2>Your Upcoming events</h2>
             <div class="venueArtistList">
                 <ul class="list-unstyled">
@@ -89,5 +90,6 @@
                     </g:each>
                 </ul>
             </div>
+        </div>
     </body>
 </html>
