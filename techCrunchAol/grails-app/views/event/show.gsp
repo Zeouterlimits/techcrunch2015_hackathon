@@ -54,7 +54,7 @@
                 <!--if venue-->
                 <g:form resource="${this.event}" method="PUT" action="approve">
                        <li><a href="/artist/show/${artist.id}">${artist.name}</a></li>
-                       <input type="submit" value="${message(code: 'default.button.approve.label', default: 'Approve')}" onclick="return confirm('${message(code: 'default.button.approve.confirm.message', default: "Are you sure you want to approve ${artist.name}?")}');" />             
+                       <input class="btn btn-success" type="submit" value="${message(code: 'default.button.approve.label', default: 'Approve')}" onclick="return confirm('${message(code: 'default.button.approve.confirm.message', default: "Are you sure you want to approve ${artist.name}?")}');" />             
                        <input type="hidden" name="artistID" value="${artist.id}" />
                 </g:form>
                 </g:if>
