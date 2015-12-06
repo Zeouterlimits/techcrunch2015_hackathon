@@ -8,8 +8,6 @@ class QueryParamInterceptor {
     }
 
     boolean before() {
-        println(params)
-        println(session)
         if (params.artistId) {
             session.Artist = true
             session.Venue = false

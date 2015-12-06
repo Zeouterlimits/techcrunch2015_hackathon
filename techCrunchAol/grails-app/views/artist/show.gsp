@@ -20,7 +20,64 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="artist" />
+            
+            
+             <ol class="property-list artist">
+    
+        <li class="fieldcontain">
+            <span id="email-label" class="property-label">Email</span>
+            <div class="property-value" aria-labelledby="email-label">${artist.email}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="location-label" class="property-label">Location</span>
+            <div class="property-value" aria-labelledby="location-label">${artist.location}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="name-label" class="property-label">Name</span>
+            <div class="property-value" aria-labelledby="name-label">${artist.name}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="phoneNumber-label" class="property-label">Phone Number</span>
+            <div class="property-value" aria-labelledby="phoneNumber-label">${artist.phoneNumber}</div>
+        </li>
+         <g:if test="${artist.lastFm != '?'}">
+             <li class="fieldcontain">
+            <span id="lastFm-label" class="property-label">Last FM</span>
+            <div class="property-value" aria-labelledby="lastFm-label">${artist.lastFm}</div>
+        </li>
+        </g:if>
+
+        <g:if test="${artist.spotify != '?'}">
+        <li class="fieldcontain">
+            <span id="spotify-label" class="property-label">Spotify</span>
+            <div class="property-value" aria-labelledby="spotify-label">${artist.spotify}</div>
+        </li>
+        </g:if>
+        <g:if test="${artist.twitter != '?'}">
+        <li class="fieldcontain">
+            <span id="twitter-label" class="property-label">Twitter</span>
+            <div class="property-value" aria-labelledby="twitter-label">${artist.twitter}</div>
+        </li>
+        </g:if>
+        <g:if test="${artist.official != '?'}">
+        <li class="fieldcontain">
+            <span id="official-label" class="property-label">Official Site</span>
+            <div class="property-value" aria-labelledby="official-label">${artist.official}</div>
+        </li>
+        </g:if>
+        <g:if test="${artist.bio != '?'}">
+         <li class="fieldcontain">
+            <span id="bio-label" class="property-label">Bio</span>
+            <div class="property-value" aria-labelledby="bio-label">${artist.bio}</div>
+        </li>
+        </g:if>
+</ol>
+            
+            
+            
             <g:form resource="${this.artist}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.artist}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
