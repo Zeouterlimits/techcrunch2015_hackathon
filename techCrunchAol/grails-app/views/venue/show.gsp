@@ -70,7 +70,7 @@
 
         </div>
         <div class="venueContainer">
-         <h2>Your Upcoming events</h2>
+         <h2>Upcoming Events</h2>
             <div class="venueArtistList">
                 <ul class="list-unstyled">
                     <g:each in="${eventList}" var="event">
