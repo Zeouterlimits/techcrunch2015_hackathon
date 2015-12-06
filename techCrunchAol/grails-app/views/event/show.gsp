@@ -32,17 +32,19 @@
             
             <g:each in="${event.appliedArtists}" var="artist" >
             
+                 <g:if test="${session.Artist}">
                  <!--if artist-->
                     <li><a href="/artist/show/${artist.id}">${artist.name}</a></li>
-       
+                </g:if>
             
+            <g:if test="${session.Venue}">
                 <!--if venue-->
                 <g:form resource="${this.event}" method="PUT" action="approve">
                        <li><a href="/artist/show/${artist.id}">${artist.name}</a></li>
                        <input type="submit" value="${message(code: 'default.button.approve.label', default: 'Approve')}" onclick="return confirm('${message(code: 'default.button.approve.confirm.message', default: "Are you sure you want to approve ${artist.name}?")}');" />             
                        <input type="hidden" name="artistID" value="${artist.id}" />
                 </g:form>
-            
+                </g:if>
             </g:each>
             
             </ul>
@@ -55,16 +57,19 @@
                   <ul>
                 <g:each in="${event.confirmedArtists}" var="artist" >
             
+                 <g:if test="${session.Artist}">
                  <!--if artist-->
                     <li><a href="/artist/show/${artist.id}">${artist.name}</a></li>
-       
+                </g:if>
             
+                <g:if test="${session.Venue}">
                 <!--if venue-->
                 <g:form resource="${this.event}" method="PUT" action="remove">
                        <li><a href="/artist/show/${artist.id}">${artist.name}</a></li>
                        <input type="submit" value="${message(code: 'default.button.remove.label', default: 'Remove')}" onclick="return confirm('${message(code: 'default.button.remove.confirm.message', default: "Are you sure you want to remove ${artist.name}?")}');" />             
                        <input type="hidden" name="artistID" value="${artist.id}" />
                 </g:form>
+                </g:if>
             
             </g:each>
           </ul>
@@ -97,8 +102,17 @@
         </li>
     
 </ol>
-            
-            <!--if venue-->
+            <g:if test="${session.Artist}">
+             <!--if artist-->
+            <g:form resource="${this.event}" method="PUT" action="apply">
+                <fieldset class="buttons">
+                   <input type="submit" value="${message(code: 'default.button.apply.label', default: 'Apply')}" onclick="return confirm('${message(code: 'default.button.apply.confirm.message', default: 'Are you sure you want to apply for this event?')}');" />             
+                </fieldset>
+            </g:form>
+            </g:if>
+                    
+           <g:if test="${session.Venue}">
+                                    <!--if venue-->
             <g:form resource="${this.event}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.event}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
@@ -106,13 +120,10 @@
                    
                 </fieldset>
             </g:form>
+                    </g:if>
+
             
-            <!--if artist-->
-            <g:form resource="${this.event}" method="PUT" action="apply">
-                <fieldset class="buttons">
-                   <input type="submit" value="${message(code: 'default.button.apply.label', default: 'Apply')}" onclick="return confirm('${message(code: 'default.button.apply.confirm.message', default: 'Are you sure you want to apply for this event?')}');" />             
-                </fieldset>
-            </g:form>
+
              
         
         </div>
