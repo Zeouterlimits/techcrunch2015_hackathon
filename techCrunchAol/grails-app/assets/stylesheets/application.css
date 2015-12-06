@@ -25,3 +25,8 @@
 .venueNavbar{
     background-color: #142494 !important;
 }
+
+.venueButtons{
+    float: left; 
+    padding-left: 35px;
+}
