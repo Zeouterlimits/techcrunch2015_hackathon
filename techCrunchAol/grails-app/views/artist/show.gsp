@@ -153,12 +153,7 @@
                 </ul>
             </div>
 
-        <g:if test="${session.Venue}">
-        <h2>Events Looking For Them</h2>
-        </g:if>
-        <g:if test="${session.Artist}">
-        <h2>Events Looking For You</h2>
-        </g:if>                   
+        <h2>All Nearby Events</h2>                  
                     <div class="eventArtistList">
                         <ul class="list-unstyled">
                             <g:each in="${eventList}" var="event">

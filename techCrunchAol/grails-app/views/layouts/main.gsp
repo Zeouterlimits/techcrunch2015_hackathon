@@ -141,8 +141,8 @@
             <div class="col-lg-3">
                 Dev:
                 <g:link controller="twilio">test sms</g:link> |
-                <g:link uri="/" params="[artistId:1]">C.T.A.</g:link> |
-                <g:link uri="/" params="[venueId:1]">C.T.V.</g:link> |
+                <g:link uri="/artist/show/1" params="[artistId:1]">C.T.A.</g:link> |
+                <g:link uri="/venue/show/1" params="[venueId:1]">C.T.V.</g:link> |
                 <g:link uri="/" params="[reset:1]">reset</g:link>
             </div>
         </div>
