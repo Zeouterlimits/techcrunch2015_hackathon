@@ -61,26 +61,26 @@
          <g:if test="${artist.lastFm != '?'}">
              <li class="fieldcontain">
             <span id="lastFm-label" class="property-label">Last FM</span>
-            <div class="property-value" aria-labelledby="lastFm-label">${artist.lastFm}</div>
+            <a href="${artist.lastFm}" class="property-value" aria-labelledby="lastFm-label">${artist.lastFm}</a>
         </li>
         </g:if>
 
         <g:if test="${artist.spotify != '?'}">
         <li class="fieldcontain">
             <span id="spotify-label" class="property-label">Spotify</span>
-            <div class="property-value" aria-labelledby="spotify-label">${artist.spotify}</div>
+            <a href="${artist.spotify}" class="property-value" aria-labelledby="spotify-label">${artist.spotify}</a>
         </li>
         </g:if>
         <g:if test="${artist.twitter != '?'}">
         <li class="fieldcontain">
             <span id="twitter-label" class="property-label">Twitter</span>
-            <div class="property-value" aria-labelledby="twitter-label">${artist.twitter}</div>
+            <a href="${artist.twitter}" class="property-value" aria-labelledby="twitter-label">${artist.twitter}</a>
         </li>
         </g:if>
         <g:if test="${artist.official != '?'}">
         <li class="fieldcontain">
             <span id="official-label" class="property-label">Official Site</span>
-            <div class="property-value" aria-labelledby="official-label">${artist.official}</div>
+            <a href="${artist.official}" class="property-value" aria-labelledby="official-label">${artist.official}</a>
         </li>
         </g:if>
         <g:if test="${artist.bio != '?'}">

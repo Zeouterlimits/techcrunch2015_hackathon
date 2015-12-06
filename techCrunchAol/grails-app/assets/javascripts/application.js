@@ -268,7 +268,7 @@ if (typeof jQuery !== 'undefined') {
               '" data-url-officalSite="' + officalSite +
               '" data-url-twitter="' + twitter +
               '" data-url-spotify="' + spotify +
-              '" data-url-lastFm="' + lastFm + '"><a href="http://localhost:8080/artist/show/3" >' +
+              '" data-url-lastFm="' + lastFm + '"><a href="http://localhost:8080/artist/show/3?artistId=1" >' +
                 '<img class="hummArtistPhoto" src="' + photo + '"/>' +
                 '<div class="hummArtistName">'+ name + '</div>' +
               '</a></li>'
@@ -288,9 +288,11 @@ if (typeof jQuery !== 'undefined') {
                 email: "info@generalfiasco.co.uk", password: "e", location: "London",
                 phoneNumber: "+353851146849", username: "e", create: "Create", latitude: "51.549964506565914",
                 longitude: "-0.0418853759765625"});
+            
+            
             setTimeout(function(){
 
-            }, 20000);
+            }, 2000);
         };
         $(document).ready(function(){
             $( ".formName" ).on('input',function() {
