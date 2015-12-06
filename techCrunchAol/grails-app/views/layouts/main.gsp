@@ -62,7 +62,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" title="more than a gig">&gt;1025m</a>
+
+            <a href="/"><img src="/assets/1025_logo1_white.png" height="50px" /></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -134,7 +135,8 @@
     <footer>
         <div class="row">
             <div class="col-lg-9">
-                <p>Copyright &copy; Hackers</p>
+                <p>Copyright &copy; Hackers.
+                    <a href="http://www.freepik.com/">Freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a></p>
             </div>
             <div class="col-lg-3">
                 Dev:
@@ -154,6 +156,5 @@
 <asset:javascript src="bootstrap.min.js"/>
 
 </body>
-<!-- logo by Hand graphic by <a href="http://www.freepik.com/">Freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a> -->
 </html>
 
