@@ -9,6 +9,11 @@ class Artist {
     String profilePicPath;
     String phoneNumber;
     String email;
+    String lastFm;
+    String spotify;
+    String twitter;
+    String official;
+    String bio;
 
     // Map API object?
     String location;
