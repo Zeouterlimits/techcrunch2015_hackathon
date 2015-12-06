@@ -208,8 +208,11 @@ if (typeof jQuery !== 'undefined') {
     }
 
     function Proximity(){
+        var self = this;
         self.mapContainer = $("#proxmap");
         self.proxmap = null;
+        self.popup = L.popup();
+
 
         self.initProxMap = function(position){
 
@@ -235,8 +238,6 @@ if (typeof jQuery !== 'undefined') {
                 id: 'your.mapbox.project.id',
                 accessToken: 'rfcYFGTiHFcPCCc3nORTNEDnHuBpte9n'
             }).addTo(self.proxmap);
-
-            self.proxmap.on('click', self.onMapClick);
 
             self.setMarker(position);
             self.getEvents();
@@ -284,6 +285,21 @@ if (typeof jQuery !== 'undefined') {
             self.marker = L.marker([position.coords.latitude, position.coords.longitude], {icon: greenIcon, draggable:true}).addTo(self.proxmap);
             self.marker.addTo(self.proxmap);
 
+            self.marker.on('click', function(e){
+                self.popup.setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(map);
+
+
+                //create the coords
+                temp = {coords :{latitude : e.latlng.lat, longitude: e.latlng.lng }}
+
+
+                self.setMarker(temp)
+                //add the icons
+
+
+            })
         }
 
         self.initProxMap(point);
