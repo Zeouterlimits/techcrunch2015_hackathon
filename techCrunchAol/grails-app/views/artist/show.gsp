@@ -14,7 +14,7 @@
             </g:if>
             <img class="artistImage" src="${artist.profilePicPath}" height=200/>
             
-            <g:if test="${session.Venue}">
+            <g:if test="${session.Artist}">
             <g:form class="eventButtons" resource="${this.artist}" method="DELETE">
                 <fieldset>
                     <g:link class="btn btn-default" action="edit" resource="${this.artist}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
