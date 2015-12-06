@@ -27,7 +27,47 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="venue"/>
+                    %{--<f:all bean="venue"/>--}%
+
+
+
+                    <f:with bean="venue">
+                        <f:field property="name"/>
+                        <f:field property="email"/>
+                        <f:field property="location"/>
+                    </f:with>
+
+                    <button id="get_location">Use Geo Location</button>
+                    <br>
+                    <div>Manually Enter Address</div>
+                    <input id="address">
+                    <br>
+                    <button id="search_address">Search MapQuest</button>
+                    %{--<p id="demo"></p>--}%
+
+                    <div id="map"></div>
+
+
+                    <f:with bean="venue">
+                        <f:field property="latitude"/>
+                        <f:field property="longitude"/>
+                        <f:field property="favouriteArtists"/>
+                        <f:field property="favouriteGenre"/>
+                        <f:field property="phoneNumber"/>
+                        <f:field property="profilePicPath"/>
+                        <f:field property="username"/>
+                        <f:field property="password"/>
+                    </f:with>
+                    %{--Email--}%
+                    %{--Favourite Artist--}%
+                    %{--Favourite Genre--}%
+                    %{--Location--}%
+                    %{--Name--}%
+                    %{--Password--}%
+                    %{--Phone NUmber--}%
+                    %{--Profile Pic--}%
+                    %{--Username--}%
+
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

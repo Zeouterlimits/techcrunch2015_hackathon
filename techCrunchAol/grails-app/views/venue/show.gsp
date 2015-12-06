@@ -19,7 +19,13 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
+
+
             <f:display bean="venue" />
+
+            <div id="map"></div>
+
+
             <form action="../../event/create" >
                 <button name="venue" value="${this.venue.name}">Create Event</button>
             </form>

@@ -8,6 +8,10 @@ class Venue {
     String profilePicPath;
     String phoneNumber;
     String email;
+    String latitude;
+    String longitude;
+
+
 
     // Map API object?
     String location;
