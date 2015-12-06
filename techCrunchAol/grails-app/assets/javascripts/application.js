@@ -67,7 +67,8 @@ if (typeof jQuery !== 'undefined') {
             self.marker = L.marker([position.coords.latitude, position.coords.longitude], {icon: greenIcon, draggable:true}).addTo(self.map);
 
             self.marker.on('dragend', function(){
-                alert(self.marker.target._latlng);
+                temp = {latitude: self.marker._latlng.lat, longitude : self.marker._latlng.lng}
+                self.printCoords(temp);
             })
 
             self.marker.addTo(self.map);
@@ -132,6 +133,7 @@ if (typeof jQuery !== 'undefined') {
         }
 
         self.printCoords = function(coords){
+
             if(coords.lat == undefined){
                 //$("#demo").text("Lat = " + coords.latitude + " & Long = " + coords.longitude );
                 $('input[name=\'longitude\']').val(coords.longitude);
@@ -142,8 +144,6 @@ if (typeof jQuery !== 'undefined') {
                 $('input[name=\'longitude\']').val(coords.lng);
                 $('input[name=\'latitude\']').val(coords.lat);
             }
-
-
 
         }
 
@@ -190,7 +190,6 @@ if (typeof jQuery !== 'undefined') {
 
 
             if(window.location.pathname.indexOf("/venue/show/") >= 0){
-
                 //show map on the page
                 point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }}
                 self.initMap(point);
