@@ -268,7 +268,7 @@ if (typeof jQuery !== 'undefined') {
               '" data-url-officalSite="' + officalSite +
               '" data-url-twitter="' + twitter +
               '" data-url-spotify="' + spotify +
-              '" data-url-lastFm="' + lastFm + '"><a href="http://localhost:8080/artist/show/1" >' +
+              '" data-url-lastFm="' + lastFm + '"><a href="http://localhost:8080/artist/show/3" >' +
                 '<img class="hummArtistPhoto" src="' + photo + '"/>' +
                 '<div class="hummArtistName">'+ name + '</div>' +
               '</a></li>'
@@ -284,8 +284,13 @@ if (typeof jQuery !== 'undefined') {
             var spotify = $(li).data("url-spotify");
             var lastFm = $(li).data("url-lastfm");
             $.post( "http://localhost:8080/artist/saveHumm", { name: name, profilePicPath: photo, bio: bioTrim,
-                official: officalSite, lastFm: lastFm, twitter: twitter, spotify: spotify, email: "e",
-                password: "e", location: "e", phoneNumber: "e", username: "e", create: "Create"} );
+                official: officalSite, lastFm: lastFm, twitter: twitter, spotify: spotify,
+                email: "info@generalfiasco.co.uk", password: "e", location: "London",
+                phoneNumber: "+353851146849", username: "e", create: "Create", latitude: "51.549964506565914",
+                longitude: "-0.0418853759765625"});
+            setTimeout(function(){
+
+            }, 20000);
         };
         $(document).ready(function(){
             $( ".formName" ).on('input',function() {

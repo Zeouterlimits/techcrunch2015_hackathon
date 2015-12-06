@@ -71,7 +71,7 @@
             <ul class="nav navbar-nav" style="float:right">
                 <li>
                     <g:if test="${session.Artist}">
-                        <g:link uri="/artist/show/1">U2</g:link>
+                        <g:link uri="/artist/show/3">GF</g:link>
                     </g:if>
                     <g:if test="${session.Venue}">
                         <g:link uri="/venue/show/1">Brazen Head</g:link>
@@ -141,7 +141,7 @@
             <div class="col-lg-3">
                 Dev:
                 <g:link controller="twilio">test sms</g:link> |
-                <g:link uri="/artist/show/1" params="[artistId:1]">C.T.A.</g:link> |
+                <g:link uri="/artist/show/3" params="[artistId:1]">C.T.A.</g:link> |
                 <g:link uri="/venue/show/1" params="[venueId:1]">C.T.V.</g:link> |
                 <g:link uri="/" params="[reset:1]">reset</g:link>
             </div>
