@@ -18,6 +18,7 @@
 .eventArtistList .eventDate{
     color: #8C8C8C;
 }
+
 .hummArtistName {
     height: 50px;
     display: table-cell;
@@ -29,4 +30,32 @@ img.hummArtistPhoto {
     width: 50px;
     float: left;
     margin: 6px;
+}
+
+.artistNavbar{
+    background-color: #802E2E !important;
+}
+.venueNavbar{
+    background-color: #142494 !important;
+}
+
+.venueButtons{
+    float: left; 
+    padding-left: 35px;
+}
+
+.venueContainer{
+    height: 300px;
+    width: 600px;
+    margin: 35px;
+}
+
+.eventButtons{
+    padding-left: 35px;
+}
+
+.artistImage{
+	float: right;
+    padding-right: 35px;
+    padding-bottom: 35px;
 }

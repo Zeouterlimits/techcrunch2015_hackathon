@@ -43,7 +43,16 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<g:if test="${session.Artist}">
+    <nav class="artistNavbar navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:if>
+<g:elseif test="${session.Venue}">
+    <nav class="venueNavbar navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:elseif>
+<g:else test="${session.Venue}">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:else>
+
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -53,7 +62,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" title="more than a gig">&gt;1025m</a>
+
+            <a href="/"><img src="/assets/1025_logo1_white.png" height="50px" /></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -61,10 +71,10 @@
             <ul class="nav navbar-nav" style="float:right">
                 <li>
                     <g:if test="${session.Artist}">
-                        <a href="">U2</a>
+                        <g:link uri="/artist/show/1">U2</g:link>
                     </g:if>
                     <g:if test="${session.Venue}">
-                        <a href="#">Brazen Head</a>
+                        <g:link uri="/venue/show/1">Brazen Head</g:link>
                     </g:if>
 
                 </li>
@@ -80,14 +90,24 @@
 
     <div class="row">
 
-        <div class="col-md-3">
-            <p class="lead">Nav</p>
-            <div class="list-group">
-                <a href="#" class="list-group-item">Setup Event</a>
-                <a href="#" class="list-group-item">Search Artists</a>
-                <a href="#" class="list-group-item">My Profile</a>
-            </div>
-        </div>
+        %{--<!-- LEFT NAV -->--}%
+        %{--<g:if test="${session.Artist} || ${session.Venue}">--}%
+            %{--<div class="col-md-3">--}%
+                %{--<p class="lead">Nav</p>--}%
+                %{--<div class="list-group">--}%
+
+                    %{--<g:if test="${session.Artist}">--}%
+                        %{--<g:link uri="/artist/show/1" class="list-group-item">My Profile</g:link>--}%
+
+                    %{--</g:if>--}%
+                    %{--<g:elseif test="${session.Venue}">--}%
+                        %{--<g:link uri="/event/create" class="list-group-item">Setup Event</g:link>--}%
+                        %{--<a href="#" class="list-group-item">Search Artists</a>--}%
+                        %{--<g:link uri="/venue/show/1" class="list-group-item">My Profile</g:link>--}%
+                    %{--</g:elseif>--}%
+                %{--</div>--}%
+            %{--</div>--}%
+        %{--</g:if>--}%
 
         <div class="col-md-9">
 
@@ -115,13 +135,14 @@
     <footer>
         <div class="row">
             <div class="col-lg-9">
-                <p>Copyright &copy; Hackers</p>
+                <p>Copyright &copy; Hackers.
+                    <a href="http://www.freepik.com/">Freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a></p>
             </div>
             <div class="col-lg-3">
                 Dev:
                 <g:link controller="twilio">test sms</g:link> |
-                <g:link uri="/" params="[artistId:1]">C.T.A.</g:link> |
-                <g:link uri="/" params="[venueId:1]">C.T.V.</g:link> |
+                <g:link uri="/artist/show/1" params="[artistId:1]">C.T.A.</g:link> |
+                <g:link uri="/venue/show/1" params="[venueId:1]">C.T.V.</g:link> |
                 <g:link uri="/" params="[reset:1]">reset</g:link>
             </div>
         </div>
@@ -135,6 +156,5 @@
 <asset:javascript src="bootstrap.min.js"/>
 
 </body>
-
 </html>
 

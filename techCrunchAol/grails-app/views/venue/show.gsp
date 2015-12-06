@@ -7,37 +7,80 @@
     </head>
     <body>
         <a href="#show-venue" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
         <div id="show-venue" class="content scaffold-show" role="main">
             <h1><g:message code="${venue.name}" args="[entityName]" /></h1>
+
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+                <div class="message" role="status">${flash.message}</div>
             </g:if>
 
+            <img class="artistImage" src="${venue.profilePicPath}" height=200/>
 
-            <f:display bean="venue" />
+            <g:if test="${session.Venue}">
 
-            <div id="map"></div>
+                <g:form class="venueButtons" resource="${this.venue}" method="DELETE">
+                    <fieldset class="">
+                        <g:link class="btn btn-default" action="edit" resource="${this.venue}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                        <input class="btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+
+                    </fieldset>
+                </g:form>
+
+                <form action="/event/create" method="GET" >
+                    <input type="hidden" name="longitude" value="${this.venue.longitude}">
+                    <input type="hidden" name="latitude" value="${this.venue.latitude}">
+                    <input type="hidden" name="location" value="${this.venue.location}">
+                    <button class="btn btn-success" style="margin-left: 3px" name="venue" value="${this.venue.name}">Create Event</button>
+                </form>
+
+           </g:if>
+            
+        <ol class="property-list venue">
+    
+        <li class="fieldcontain">
+            <span id="email-label" class="property-label">Email</span>
+            <div class="property-value" aria-labelledby="email-label">${venue.email}</div>
+        </li>
+    
+        <li class="hide">
+            <span id="latitude-label" class="property-label">Latitude</span>
+            <div class="property-value" aria-labelledby="latitude-label">${venue.latitude}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="location-label" class="property-label">Location</span>
+            <div class="property-value" aria-labelledby="location-label">${venue.location}</div>
+        </li>
+    
+        <li class="hide">
+            <span id="longitude-label" class="property-label">Longitude</span>
+            <div class="property-value" aria-labelledby="longitude-label">${venue.longitude}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="name-label" class="property-label">Name</span>
+            <div class="property-value" aria-labelledby="name-label">${venue.name}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="phoneNumber-label" class="property-label">Phone Number</span>
+            <div class="property-value" aria-labelledby="phoneNumber-label">${venue.phoneNumber}</div>
+        </li>
+    
+        <li class="fieldcontain">
+            <span id="username-label" class="property-label">Username</span>
+            <div class="property-value" aria-labelledby="username-label">${venue.username}</div>
+        </li>
+    
+</ol>
+
+            <div class="venueContainer" id="map"></div>
 
 
-            <form action="../../event/create" >
-                <button name="venue" value="${this.venue.name}">Create Event</button>
-            </form>
 
-            <g:form resource="${this.venue}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${this.venue}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
-            </g:form>
         </div>
-         <h2>Your Upcoming events</h2>
+        <div class="venueContainer">
+         <h2>Upcoming Events</h2>
             <div class="venueArtistList">
                 <ul class="list-unstyled">
                     <g:each in="${eventList}" var="event">
@@ -50,12 +93,13 @@
                                     ${event.venue} - ${event.location}
                                 </li>
                                 <li class="eventDate">
-                                    ${event.start_time} - ${event.end_time}
+                                    <g:formatDate date="${event.start_time}" type="both" style="SHORT"/> - <g:formatDate date="${event.end_time}" type="both" style="SHORT"/>
                                 </li>
                             </ul>
                         </li>
                     </g:each>
                 </ul>
             </div>
+        </div>
     </body>
 </html>
