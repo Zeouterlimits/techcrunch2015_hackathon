@@ -14,9 +14,6 @@
             </g:if>
             <f:table collection="${fanList}" />
 
-            <div class="pagination">
-                <g:paginate total="${fanCount ?: 0}" />
-            </div>
         </div>
     </body>
 </html>

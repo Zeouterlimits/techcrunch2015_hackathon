@@ -14,9 +14,6 @@
             </g:if>
             <f:table collection="${venueList}" />
 
-            <div class="pagination">
-                <g:paginate total="${venueCount ?: 0}" />
-            </div>
         </div>
     </body>
 </html>

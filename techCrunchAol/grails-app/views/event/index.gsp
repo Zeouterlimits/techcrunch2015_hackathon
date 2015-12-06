@@ -14,9 +14,6 @@
             </g:if>
             <f:table collection="${eventList}"  properties="['title', 'start_time', 'venue', 'confirmedArtists']" />
 
-            <div class="pagination">
-                <g:paginate total="${eventCount ?: 0}" />
-            </div>
         </div>
     </body>
 </html>
