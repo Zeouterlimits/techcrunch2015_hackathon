@@ -37,18 +37,24 @@
                         <f:field property="location"/>
                     </f:with>
 
-                    <button class="btn btn-default" id="get_location">Use Geo Location</button>
-                    <br>
-                    <div>Manually Enter Address</div>
-                    <input id="address">
-                    <br>
-                    <button class="btn btn-default" id="search_address">Search MapQuest</button>
+                    <div class="eventButtons fieldcontain" style="padding-left:0px;">
+                        %{--<input type="submit" name="create" class="btn btn-success" value="Create" id="create">--}%
+                        <label>Set Location</label>
+                        <button class="btn btn-default btn btn-default" id="get_location">Use Geo-Location</button>
+                    </div>
+
+                    <div class="eventButtons fieldcontain" style="padding-left:0px;">
+                        %{--<input type="submit" name="create" class="btn btn-success" value="Create" id="create">--}%
+                        <label>Search via MapQuest</label>
+                        <input id="address">
+                        <button class="btn btn-default btn btn-success" id="search_address">Search MapQuest</button>
+                    </div>
                     %{--<p id="demo"></p>--}%
 
                     <div id="map" class="venueContainer"></div>
 
 
-                    
+
                     %{--Email--}%
                     %{--Favourite Artist--}%
                     %{--Favourite Genre--}%

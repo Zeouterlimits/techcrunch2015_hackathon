@@ -51,7 +51,7 @@ class EventController {
                 body: "A new gig slot has opened up near you, at the " + event.location + ", please take a look!"
         ]
         // Enable for tests & demo
-       // twilioService.sendMsg(msg)
+        twilioService.sendMsg(msg)
 
         /// Twilio Call \\\
 
@@ -116,7 +116,7 @@ class EventController {
             '*'{ render status: NO_CONTENT }
         }
     }
-    
+
     @Transactional
     def apply(Event event) {
         if (event == null) {
@@ -131,7 +131,7 @@ class EventController {
             return
         }
         //hardcoded artist ID , replace 1 with current Artist's ID from session
-        Artist artist = Artist.get(1);
+        Artist artist = Artist.get(3);
 
         /// Twilio Call \\\
         // Enable for tests & demo
@@ -140,10 +140,10 @@ class EventController {
                 body: "The artist(s) " + artist.name + " have applied to play at your gig: " + event.title
         ]
         // Enable for tests & demo
-        //twilioService.sendMsg(msg)
+        twilioService.sendMsg(msg)
 
         /// Twilio Call \\\
-        
+
         event.appliedArtists.add(artist)
 
         request.withFormat {
@@ -169,9 +169,9 @@ class EventController {
             return
         }
         def artist = Artist.get(params.int('artistID'));
-        
+
         event.appliedArtists.remove(artist)
-        
+
         event.confirmedArtists.add(artist)
 
         request.withFormat {
@@ -196,11 +196,11 @@ class EventController {
             respond event.errors, view:'edit'
             return
         }
-        
+
         def artist = Artist.get(params.int('artistID'));
-        
+
         event.confirmedArtists.remove(artist)
-      
+
 
         request.withFormat {
             form multipartForm {
@@ -210,7 +210,7 @@ class EventController {
             '*'{ respond event, [status: OK] }
         }
     }
-    
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {

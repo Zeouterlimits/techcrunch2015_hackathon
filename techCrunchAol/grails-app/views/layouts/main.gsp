@@ -71,7 +71,7 @@
             <ul class="nav navbar-nav" style="float:right">
                 <li>
                     <g:if test="${session.Artist}">
-                        <g:link uri="/artist/show/3">GF</g:link>
+                        <g:link uri="/artist/show/3">General Fiasco</g:link>
                     </g:if>
                     <g:if test="${session.Venue}">
                         <g:link uri="/venue/show/1">Brazen Head</g:link>
@@ -157,4 +157,3 @@
 
 </body>
 </html>
-
