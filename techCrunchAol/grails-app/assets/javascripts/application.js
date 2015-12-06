@@ -299,7 +299,142 @@ if (typeof jQuery !== 'undefined') {
         });
     }
 
-    var humm = Humm();
+
+function Proximity() {
+    var self = this;
+    self.mapContainer = $("#proxmap");
+    self.proxmap = null;
+    self.popup = L.popup();
+
+
+    self.onMapClick = function(e) {
+        $.get("http://localhost:8080/event/listAll", function (data) {
+            if (data !== "") {
+
+                temp = JSON.parse(data);
+
+                $.each(temp, function (key, value) {
+
+                    if(value.longitude == e.latlng.lng){
+                        //populate the textbox with the vlaues
+
+                        self.popup.setLatLng(e.latlng)
+                            .setContent("Event : " + value.title +
+                            "<br> Location : " + value.location).openOn(self.proxmap);
+
+                    }
+                });
+
+            } else {
+                alert("empty data")
+            }
+        }, 'html').fail(function (jqXHR, textStatus, errorThrown) {
+            console.log("Season Load Ajax failed: " + textStatus + ", " + errorThrown.toString());
+        }).always(function () {
+            // always remove loading etc
+        });
+
+
+
+
+
+
+    }
+
+
+
+    self.initProxMap = function (position) {
+
+        if (self.mapContainer.data('map_width') != undefined && self.mapContainer.data('map_height') != undefined) {
+
+            $("#proxmap").width($("#proxmap").data('map_width'));
+            $("#proxmap").height($("#proxmap").data('map_height'));
+
+        } else {
+            $("#proxmap").height('400px');
+        }
+
+        self.proxmap = L.map('proxmap', {
+            layers: MQ.mapLayer(),
+            center: [position.coords.latitude, position.coords.longitude],
+            zoom: 12
+        });
+
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 18,
+            id: 'your.mapbox.project.id',
+            accessToken: 'rfcYFGTiHFcPCCc3nORTNEDnHuBpte9n'
+        }).addTo(self.proxmap);
+
+        self.setMarker(position);
+        self.getEvents();
+
+        //self.printCoords(position.coords);
+
+    }
+
+
+    self.getEvents = function () {
+
+        $.get("http://localhost:8080/event/listAll", function (data) {
+            if (data !== "") {
+
+                temp = JSON.parse(data);
+
+                $.each(temp, function (key, value) {
+
+                    var position = {coords: {longitude: value.longitude, latitude: value.latitude}}
+                    self.setMarker(position);
+                });
+
+            } else {
+                alert("empty data")
+            }
+        }, 'html').fail(function (jqXHR, textStatus, errorThrown) {
+            console.log("Season Load Ajax failed: " + textStatus + ", " + errorThrown.toString());
+        }).always(function () {
+            // always remove loading etc
+        });
+
+
+    }
+
+
+    self.setMarker = function (position) {
+
+        var LeafIcon = L.Icon.extend({
+            options: {
+                iconSize: [40, 40]
+            }
+        });
+
+        var greenIcon = new LeafIcon({iconUrl: '/assets/guitar-icon.png'});
+        self.marker = L.marker([position.coords.latitude, position.coords.longitude], {
+            icon: greenIcon,
+            draggable: true
+        }).addTo(self.proxmap).on('click', self.onMapClick);
+        self.marker.addTo(self.proxmap);
+    }
+
+    self.initProxMap(point);
+
+}
+
+
+$(document).ready(function(){
+
+
+    if(window.location.pathname.indexOf("/artist/show/") >= 0){
+        //show map on the page
+        point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }};
+        var prox = Proximity();
+    }
+
+});
+
+var humm = Humm();
     var mapquest = MapQuest();
 
 
