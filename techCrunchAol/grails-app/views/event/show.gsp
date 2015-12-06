@@ -59,7 +59,7 @@
                 <!--if venue-->
                 <g:form resource="${this.event}" method="PUT" action="remove">
                        <li><a href="/artist/show/${artist.id}">${artist.name}</a></li>
-                       <input type="submit" value="${message(code: 'default.button.remove.label', default: 'Remove')}" onclick="return confirm('${message(code: 'default.button.remove.confirm.message', default: "Are you sure you want to remove ${artist.name}?")}');" />             
+                       <input class="btn btn-danger" type="submit" value="${message(code: 'default.button.remove.label', default: 'Remove')}" onclick="return confirm('${message(code: 'default.button.remove.confirm.message', default: "Are you sure you want to remove ${artist.name}?")}');" />             
                        <input type="hidden" name="artistID" value="${artist.id}" />
                 </g:form>
                 </g:if>
