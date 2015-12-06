@@ -33,8 +33,8 @@ grails <!DOCTYPE html>
                         <g:datePicker name="end_time" value="${new Date()}" precision="minute" relativeYears="${0..7}"/>
                     </div>
                 </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                <fieldset>
+                    <g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
             </g:form>
         </div>
