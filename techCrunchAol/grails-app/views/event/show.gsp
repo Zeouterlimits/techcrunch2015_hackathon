@@ -16,8 +16,8 @@
            
             <g:if test="${session.Artist}">
              <!--if artist-->
-            <g:form class="eventButtons resource="${this.event}" method="PUT" action="apply">
-                <fieldset >
+            <g:form class="eventButtons" resource="${this.event}" method="PUT" action="apply">
+                <fieldset>
                    <input class="btn btn-success" type="submit" value="${message(code: 'default.button.apply.label', default: 'Apply')}" onclick="return confirm('${message(code: 'default.button.apply.confirm.message', default: 'Are you sure you want to apply for this event?')}');" />             
                 </fieldset>
             </g:form>
