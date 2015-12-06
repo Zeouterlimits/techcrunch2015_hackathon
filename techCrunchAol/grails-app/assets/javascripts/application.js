@@ -207,7 +207,6 @@ if (typeof jQuery !== 'undefined') {
         });
     }
 
-<<<<<<< HEAD
     function Proximity() {
         var self = this;
         self.mapContainer = $("#proxmap");
