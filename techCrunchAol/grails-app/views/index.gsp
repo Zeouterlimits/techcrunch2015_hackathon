@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to 1GB</title>
+    <title>more than a gig</title>
     <style type="text/css" media="screen">
     #status {
         background-color: #eee;
