@@ -9,24 +9,32 @@
         <a href="#show-venue" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div id="show-venue" class="content scaffold-show" role="main">
             <h1><g:message code="${venue.name}" args="[entityName]" /></h1>
+
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+                <div class="message" role="status">${flash.message}</div>
             </g:if>
+
+            <img class="artistImage" src="${venue.profilePicPath}" height=200/>
+
             <g:if test="${session.Venue}">
 
-            <g:form class="venueButtons" resource="${this.venue}" method="DELETE">
-                <fieldset class="">
-                    <g:link class="btn btn-default" action="edit" resource="${this.venue}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                
-                </fieldset>
-            </g:form>
-            
-            <form action="../../event/create" >
-                <button class="btn btn-success" style="margin-left: 3px" name="venue" value="${this.venue.name}">Create Event</button>
-            </form>
+                <g:form class="venueButtons" resource="${this.venue}" method="DELETE">
+                    <fieldset class="">
+                        <g:link class="btn btn-default" action="edit" resource="${this.venue}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                        <input class="btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+
+                    </fieldset>
+                </g:form>
+
+                <form action="/event/create" method="GET" >
+                    <input type="hidden" name="longitude" value="${this.venue.longitude}">
+                    <input type="hidden" name="latitude" value="${this.venue.latitude}">
+                    <input type="hidden" name="location" value="${this.venue.location}">
+                    <button class="btn btn-success" style="margin-left: 3px" name="venue" value="${this.venue.name}">Create Event</button>
+                </form>
 
            </g:if>
+            
         <ol class="property-list venue">
     
         <li class="fieldcontain">

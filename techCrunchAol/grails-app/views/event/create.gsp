@@ -21,7 +21,20 @@ grails <!DOCTYPE html>
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="event" except="start_time,end_time"/>
+                    <f:all bean="event" except="appliedArtists,confirmedArtists,start_time,end_time, latitude, longitude, location"/>
+                    <div class='fieldcontain required' style="display: none;">
+                      <label for='latitude'>Latitude
+                        <span class='required-indicator'>*</span>
+                      </label><input type="text" name="latitude" value="51.5443601" required="" id="latitude" />
+                    </div><div class='fieldcontain required' style="display: none;">
+                      <label for='location'>Location
+                        <span class='required-indicator'>*</span>
+                      </label><input type="text" name="location" value="Queen Elizabeth Olympic Park, London" required="" id="location" />
+                    </div><div class='fieldcontain required' style="display: none;">
+                      <label for='longitude'>Longitude
+                        <span class='required-indicator'>*</span>
+                      </label><input type="text" name="longitude" value="-0.0201986" required="" id="longitude" />
+                     </div>
                     <div class='fieldcontain required'>
                         <label for='venue'>Start Date</label>
                         <span class='required-indicator'>*</span>

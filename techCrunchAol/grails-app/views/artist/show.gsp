@@ -10,7 +10,7 @@
         <div id="show-artist" class="content scaffold-show" role="main">
             <h1><g:message code="${artist.name}" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+                <div class="message" role="status">${flash.message}</div>
             </g:if>
             <img class="artistImage" src="${artist.profilePicPath}" height=200/>
             
@@ -153,12 +153,7 @@
                 </ul>
             </div>
 
-        <g:if test="${session.Venue}">
-        <h2>Events Looking For Them</h2>
-        </g:if>
-        <g:if test="${session.Artist}">
-        <h2>Events Looking For You</h2>
-        </g:if>                   
+        <h2>All Nearby Events</h2>                  
                     <div class="eventArtistList">
                         <ul class="list-unstyled">
                             <g:each in="${eventList}" var="event">
