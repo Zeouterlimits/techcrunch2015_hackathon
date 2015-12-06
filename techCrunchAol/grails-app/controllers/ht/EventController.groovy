@@ -2,6 +2,8 @@ package ht
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.*
+
 
 @Transactional(readOnly = true)
 class EventController {
@@ -22,6 +24,11 @@ class EventController {
 
     def create() {
         respond new Event(params)
+    }
+
+
+    def listAll() {
+        render Event.list() as JSON
     }
 
     @Transactional

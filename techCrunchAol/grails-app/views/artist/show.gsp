@@ -14,13 +14,14 @@
             </g:if>
             <img class="artistImage" src="${artist.profilePicPath}" height=200/>
             
+            <g:if test="${session.Artist}">
             <g:form class="eventButtons" resource="${this.artist}" method="DELETE">
                 <fieldset>
                     <g:link class="btn btn-default" action="edit" resource="${this.artist}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>
-            
+            </g:if>
             
              <ol class="property-list artist">
     
@@ -94,8 +95,12 @@
             
 
         </div>
-        
+        <g:if test="${session.Venue}">
+        <h2>Their Upcoming Events</h2>
+        </g:if>
+        <g:if test="${session.Artist}">
         <h2>Your Upcoming Events</h2>
+        </g:if>
             <div class="eventArtistList">
                 <ul class="list-unstyled">
                     <g:each in="${confirmedEvents}" var="event">
@@ -118,8 +123,13 @@
                     </g:each>
                 </ul>
             </div>
-                    
+            
+        <g:if test="${session.Venue}">
+            <h2>Events They Have Applied For</h2>
+        </g:if>
+        <g:if test="${session.Artist}">
             <h2>Events You Have Applied For</h2>
+        </g:if>
 
             <div class="eventArtistList">
                 <ul class="list-unstyled">
@@ -142,8 +152,13 @@
                     </g:each>
                 </ul>
             </div>
-                    
+
+        <g:if test="${session.Venue}">
+        <h2>Events Looking For Them</h2>
+        </g:if>
+        <g:if test="${session.Artist}">
         <h2>Events Looking For You</h2>
+        </g:if>                   
                     <div class="eventArtistList">
                         <ul class="list-unstyled">
                             <g:each in="${eventList}" var="event">
@@ -165,5 +180,8 @@
                             </g:each>
                         </ul>
                     </div>
+
+
+    <div id="proxmap" data-map_width="600" data-map_height="400"></div>
     </body>
 </html>
