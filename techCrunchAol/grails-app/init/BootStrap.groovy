@@ -10,7 +10,7 @@ class BootStrap {
         def a2 = new Artist(username: "nickeback", name: "Not Nickleback", profilePicPath: "/assets/u2_artist_picture.jpg", phoneNumber: "353860567862", location: "Dublin", email: "nickleback@cayman.com", password: "password" ,lastFm: "?", spotify: "?", twitter: "?",official: "?", bio: "?").save()
 
         def v1 = new Venue(username: "brazenHeadManager", name: "Brazen Head", latitude: "51.5443601", longitude: "-0.0201986", profilePicPath: "C:/wtf.png", phoneNumber: "353860567862", location: "Dublin", email: "brazenHead@cayman.com", password: "password").save()
-        def v2 = new Venue(username: "arthursManager", name: "Arthurs", latitude: "51.5443601", longitude: "-0.0201986", aprofilePicPath: "C:/wtf.png", phoneNumber: "353860567862", location: "Dublin", email: "arthurs@cayman.com", password: "password").save()
+        def v2 = new Venue(username: "arthursManager", name: "Arthurs", latitude: "51.5443601", longitude: "-0.0201986", profilePicPath: "C:/wtf.png", phoneNumber: "353860567862", location: "Dublin", email: "arthurs@cayman.com", password: "password").save()
 
         def now = Calendar.instance.time
         new Event(title: "Brazen Battle of the Bands", venue: "Brazen Head",
