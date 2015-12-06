@@ -14,15 +14,35 @@
             </g:if>
            <!-- <f:display bean="event" />-->
            
+            <g:if test="${session.Artist}">
+             <!--if artist-->
+            <g:form class="eventButtons resource="${this.event}" method="PUT" action="apply">
+                <fieldset >
+                   <input class="btn btn-success" type="submit" value="${message(code: 'default.button.apply.label', default: 'Apply')}" onclick="return confirm('${message(code: 'default.button.apply.confirm.message', default: 'Are you sure you want to apply for this event?')}');" />             
+                </fieldset>
+            </g:form>
+            </g:if>
+                    
+           <g:if test="${session.Venue}">
+                                    <!--if venue-->
+            <g:form class="eventButtons"resource="${this.event}" method="DELETE">
+                <fieldset >
+                    <g:link class="btn btn-default" action="edit" resource="${this.event}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    <input class="btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure you want to delete this event?')}');" />
+                   
+                </fieldset>
+            </g:form>
+                    </g:if>
+           
      <ol class="property-list event">
     
         <li class="fieldcontain">
             <span id="appliedArtists-label" class="property-label">Applied Artists</span>
             <div class="property-value" aria-labelledby="appliedArtists-label">
             
+           
             <ul>
-            
-            
+                 
             <g:each in="${event.appliedArtists}" var="artist" >
             
                  <g:if test="${session.Artist}">
@@ -80,7 +100,7 @@
         </li>
     
         <li class="fieldcontain">
-            <span id="start_time-label" class="property-label">Starttime</span>
+            <span id="start_time-label" class="property-label">Start Time</span>
             <div class="property-value" aria-labelledby="start_time-label">${event.start_time}</div>
         </li>
     
@@ -95,25 +115,7 @@
         </li>
     
 </ol>
-            <g:if test="${session.Artist}">
-             <!--if artist-->
-            <g:form resource="${this.event}" method="PUT" action="apply">
-                <fieldset class="buttons">
-                   <input type="submit" value="${message(code: 'default.button.apply.label', default: 'Apply')}" onclick="return confirm('${message(code: 'default.button.apply.confirm.message', default: 'Are you sure you want to apply for this event?')}');" />             
-                </fieldset>
-            </g:form>
-            </g:if>
-                    
-           <g:if test="${session.Venue}">
-                                    <!--if venue-->
-            <g:form resource="${this.event}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${this.event}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure you want to delete this event?')}');" />
-                   
-                </fieldset>
-            </g:form>
-                    </g:if>
+
 
             
 
