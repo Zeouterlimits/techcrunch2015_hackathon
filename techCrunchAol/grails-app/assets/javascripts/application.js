@@ -87,7 +87,15 @@ if (typeof jQuery !== 'undefined') {
 
         self.initMap = function(position){
 
-            $("#map").height('400px');
+
+            if($("#map").data('map_width') != undefined && $("#map").data('map_height') != undefined){
+
+                $("#map").width($("#map").data('map_width'));
+                $("#map").height($("#map").data('map_height'));
+
+            }else{
+                $("#map").height('400px');
+            }
 
             self.map = L.map('map', {
                 layers: MQ.mapLayer(),
@@ -192,6 +200,11 @@ if (typeof jQuery !== 'undefined') {
 
 
             if(window.location.pathname.indexOf("/venue/show/") >= 0){
+                //show map on the page
+                point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }}
+                self.initMap(point);
+            }
+            else if(window.location.pathname.indexOf("/artist/show/") >= 0){
                 //show map on the page
                 point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }}
                 self.initMap(point);
