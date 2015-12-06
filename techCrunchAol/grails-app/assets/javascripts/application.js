@@ -162,11 +162,13 @@ if (typeof jQuery !== 'undefined') {
                     console.log( "lat = " + coords.lat + " and longitude = " + coords.lng );
 
                     if(self.map == null){
-                        position = {coords : {latitute: coords.lat, longitute : coords.lng}}
+                        position = {coords : {latitude: coords.lat, longitude : coords.lng}}
                         console.dir(position);
                         self.initMap(position)
                     }
-                    self.updateMap(coords);
+                    else {
+                        self.updateMap(coords);
+                    }
                 } else {
                     alert("empty data")
                 }
