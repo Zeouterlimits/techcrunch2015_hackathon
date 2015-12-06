@@ -14,6 +14,9 @@ class Artist {
     String twitter;
     String official;
     String bio;
+    String latitude;
+    String longitude;
+
 
     // Map API object?
     String location;
