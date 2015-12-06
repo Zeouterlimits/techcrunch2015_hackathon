@@ -133,10 +133,18 @@ if (typeof jQuery !== 'undefined') {
 
         self.printCoords = function(coords){
             if(coords.lat == undefined){
-                $("#demo").text("Lat = " + coords.latitude + " & Long = " + coords.longitude );
+                //$("#demo").text("Lat = " + coords.latitude + " & Long = " + coords.longitude );
+                $('input[name=\'longitude\']').val(coords.longitude);
+                $('input[name=\'latitude\']').val(coords.latitude);
+
             }else{
-                $("#demo").text("Lat = " + coords.lat + " & Long = " + coords.lng );
+                //$("#demo").text("Lat = " + coords.lat + " & Long = " + coords.lng );
+                $('input[name=\'longitude\']').val(coords.lng);
+                $('input[name=\'latitude\']').val(coords.lat);
             }
+
+
+
         }
 
 
@@ -179,6 +187,14 @@ if (typeof jQuery !== 'undefined') {
             });
 
             $("#search_address").click(self.search);
+
+
+            if(window.location.pathname.indexOf("/venue/show/") >= 0){
+
+                //show map on the page
+                point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }}
+                self.initMap(point);
+            }
 
         });
     }
