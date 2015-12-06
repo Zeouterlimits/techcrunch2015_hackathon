@@ -64,6 +64,8 @@ dependencies {
     compile "org.hibernate:hibernate-ehcache"
     compile "org.grails.plugins:scaffolding"
     compile "com.twilio.sdk:twilio-java-sdk:5.6.0"
+    compile "com.mashape.unirest:unirest-java:1.4.7"
+    compile "org.json:json:20151123"
 
     runtime "org.grails.plugins:asset-pipeline"
 

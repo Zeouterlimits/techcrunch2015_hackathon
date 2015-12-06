@@ -9,6 +9,8 @@ this is example how to use Twilio from the COntroller:
 
     //- include
     def twilioService
+    def hummService
+
 
     def index() {
 
@@ -17,5 +19,11 @@ this is example how to use Twilio from the COntroller:
         ]
         //call
         render "sent " + twilioService.sendMsg(msg)
+    }
+
+    def humm() {
+
+        //call
+        render "sent " + hummService.getArtistList("beck")
     }
 }
