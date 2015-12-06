@@ -18,3 +18,10 @@
 .eventArtistList .eventDate{
     color: #8C8C8C;
 }
+
+.artistNavbar{
+    background-color: #802E2E !important;
+}
+.venueNavbar{
+    background-color: #142494 !important;
+}

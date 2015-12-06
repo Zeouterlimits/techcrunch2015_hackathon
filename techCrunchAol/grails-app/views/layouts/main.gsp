@@ -43,7 +43,16 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<g:if test="${session.Artist}">
+    <nav class="artistNavbar navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:if>
+<g:elseif test="${session.Venue}">
+    <nav class="venueNavbar navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:elseif>
+<g:else test="${session.Venue}">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:else>
+
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
