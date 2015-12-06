@@ -21,7 +21,7 @@ grails <!DOCTYPE html>
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="event" except="start_time,end_time"/>
+                    <f:all bean="event" except="appliedArtists,confirmedArtists,start_time,end_time"/>
                     <div class='fieldcontain required'>
                         <label for='venue'>Start Date</label>
                         <span class='required-indicator'>*</span>
