@@ -23,7 +23,7 @@
                 <fieldset class="form">
                     <f:all bean="artist"/>
                 </fieldset>
-                <fieldset>
+                <fieldset class="eventButtons">
                     <g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
             </g:form>

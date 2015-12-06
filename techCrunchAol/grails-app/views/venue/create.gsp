@@ -28,6 +28,12 @@
                     <f:with bean="venue">
                         <f:field property="name"/>
                         <f:field property="email"/>
+                        <g:field name="latitude" type="hidden" />
+                        <g:field name="longitude" type="hidden"/>
+                        <f:field property="phoneNumber"/>
+                        <g:field name="profilePicPath" value="/some/path" type="hidden"/>
+                        <f:field property="username"/>
+                        <f:field property="password"/>
                         <f:field property="location"/>
                     </f:with>
 
@@ -42,14 +48,7 @@
                     <div id="map" class="venueContainer"></div>
 
 
-                    <f:with bean="venue">
-                        <f:field property="latitude"/>
-                        <f:field property="longitude"/>
-                        <f:field property="phoneNumber"/>
-                        <f:field property="profilePicPath"/>
-                        <f:field property="username"/>
-                        <f:field property="password"/>
-                    </f:with>
+                    
                     %{--Email--}%
                     %{--Favourite Artist--}%
                     %{--Favourite Genre--}%
@@ -61,7 +60,7 @@
                     %{--Username--}%
 
                 </fieldset>
-                <fieldset>
+                <fieldset class="eventButtons">
                     <g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
             </g:form>
