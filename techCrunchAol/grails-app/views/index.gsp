@@ -81,6 +81,13 @@
 
 <h1>Fan landing page</h1>
 
+<g:if test="${session.Artist}">
+    I am an artist
+</g:if>
+<g:if test="${session.Venue}">
+    I am an venue
+</g:if>
+
 search for venue, search for Artist
 
 </body>

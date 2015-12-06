@@ -61,7 +61,6 @@
             </ul>
             <ul class="nav navbar-nav" style="float:right">
                 <li>
-                    <a href="#">Login</a>
                 </li>
             </ul>
         </div>
@@ -117,6 +116,9 @@
             </div>
             <div class="col-lg-1">
                 <g:link controller="twilio">test sms</g:link>
+
+                <a href="http://localhost:8080/?artistId=1">C.T.A.</a>
+                <a href="http://localhost:8080/?venueId=1">C.T.V.</a>
             </div>
         </div>
     </footer>
