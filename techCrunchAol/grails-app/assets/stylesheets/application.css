@@ -40,3 +40,9 @@
 .eventButtons{
     padding-left: 35px;
 }
+
+.artistImage{
+	float: right;
+    padding-right: 35px;
+}
+
