@@ -89,23 +89,24 @@
 
     <div class="row">
 
-        <g:if test="${session.Artist} || ${session.Venue}">
-            <div class="col-md-3">
-                <p class="lead">Nav</p>
-                <div class="list-group">
+        %{--<!-- LEFT NAV -->--}%
+        %{--<g:if test="${session.Artist} || ${session.Venue}">--}%
+            %{--<div class="col-md-3">--}%
+                %{--<p class="lead">Nav</p>--}%
+                %{--<div class="list-group">--}%
 
-                    <g:if test="${session.Artist}">
-                        <g:link uri="/artist/show/1" class="list-group-item">My Profile</g:link>
+                    %{--<g:if test="${session.Artist}">--}%
+                        %{--<g:link uri="/artist/show/1" class="list-group-item">My Profile</g:link>--}%
 
-                    </g:if>
-                    <g:elseif test="${session.Venue}">
-                        <g:link uri="/event/create" class="list-group-item">Setup Event</g:link>
-                        <a href="#" class="list-group-item">Search Artists</a>
-                        <g:link uri="/venue/show/1" class="list-group-item">My Profile</g:link>
-                    </g:elseif>
-                </div>
-            </div>
-        </g:if>
+                    %{--</g:if>--}%
+                    %{--<g:elseif test="${session.Venue}">--}%
+                        %{--<g:link uri="/event/create" class="list-group-item">Setup Event</g:link>--}%
+                        %{--<a href="#" class="list-group-item">Search Artists</a>--}%
+                        %{--<g:link uri="/venue/show/1" class="list-group-item">My Profile</g:link>--}%
+                    %{--</g:elseif>--}%
+                %{--</div>--}%
+            %{--</div>--}%
+        %{--</g:if>--}%
 
         <div class="col-md-9">
 
