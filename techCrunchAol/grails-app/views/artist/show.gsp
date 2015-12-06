@@ -10,7 +10,7 @@
         <div id="show-artist" class="content scaffold-show" role="main">
             <h1><g:message code="${artist.name}" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+                <div class="message" role="status">${flash.message}</div>
             </g:if>
             <img class="artistImage" src="${artist.profilePicPath}" height=200/>
             
