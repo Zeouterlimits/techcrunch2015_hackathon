@@ -6,6 +6,9 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class EventController {
 
+    //- include
+    def twilioService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", apply: "PUT", approve: "PUT",remove: "PUT"]
 
     def index(Integer max) {
@@ -35,6 +38,16 @@ class EventController {
             return
         }
 
+        /// Twilio Call \\\
+
+        def msg = [
+                body: "A new gig slot has opened up near you, at the " + event.location + ", please take a look!"
+        ]
+        // Enable for tests & demo
+       // twilioService.sendMsg(msg)
+
+        /// Twilio Call \\\
+
         event.save flush:true
 
         request.withFormat {
@@ -44,6 +57,8 @@ class EventController {
             }
             '*' { respond event, [status: CREATED] }
         }
+
+
     }
 
     def edit(Event event) {
@@ -110,6 +125,17 @@ class EventController {
         }
         //hardcoded artist ID , replace 1 with current Artist's ID from session
         Artist artist = Artist.get(1);
+
+        /// Twilio Call \\\
+        // Enable for tests & demo
+
+        def msg = [
+                body: "The artist(s) " + artist.name + " have applied to play at your gig: " + event.title
+        ]
+        // Enable for tests & demo
+        //twilioService.sendMsg(msg)
+
+        /// Twilio Call \\\
         
         event.appliedArtists.add(artist)
 
