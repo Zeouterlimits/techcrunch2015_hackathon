@@ -22,7 +22,10 @@
                 </fieldset>
             </g:form>
             
-            <form action="../../event/create" >
+            <form action="/event/create" method="GET" >
+                <input type="hidden" name="longitude" value="${this.venue.longitude}">
+                <input type="hidden" name="latitude" value="${this.venue.latitude}">
+                <input type="hidden" name="location" value="${this.venue.location}">
                 <button class="btn btn-success" style="margin-left: 3px" name="venue" value="${this.venue.name}">Create Event</button>
             </form>
 
