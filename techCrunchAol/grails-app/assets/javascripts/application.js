@@ -214,6 +214,14 @@ if (typeof jQuery !== 'undefined') {
         self.popup = L.popup();
 
 
+        self.onMapClick = function(e) {
+            self.popup.setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(self.proxmap);
+        }
+
+
+
         self.initProxMap = function (position) {
 
             if (self.mapContainer.data('map_width') != undefined && self.mapContainer.data('map_height') != undefined) {
@@ -241,6 +249,7 @@ if (typeof jQuery !== 'undefined') {
 
             self.setMarker(position);
             self.getEvents();
+
             //self.printCoords(position.coords);
 
         }
@@ -284,24 +293,8 @@ if (typeof jQuery !== 'undefined') {
             self.marker = L.marker([position.coords.latitude, position.coords.longitude], {
                 icon: greenIcon,
                 draggable: true
-            }).addTo(self.proxmap);
+            }).addTo(self.proxmap).on('click', self.onMapClick);
             self.marker.addTo(self.proxmap);
-
-            self.marker.on('click', function (e) {
-                self.popup.setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
-                    .openOn(map);
-
-
-                //create the coords
-                temp = {coords: {latitude: e.latlng.lat, longitude: e.latlng.lng}}
-
-
-                self.setMarker(temp)
-                //add the icons
-
-
-            })
         }
 
         self.initProxMap(point);
@@ -371,6 +364,7 @@ if (typeof jQuery !== 'undefined') {
                 '</a></li>'
             );
         };
+
         self.sendArtistData = function(li){
             var name = $(li).data("name");
             var photo = $(li).data("photo");
