@@ -27,7 +27,17 @@ grails <!DOCTYPE html>
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="event"/>
+                    <f:all bean="event" except="start_time,end_time"/>
+                    <div class='fieldcontain required'>
+                        <label for='venue'>Start Date</label>
+                        <span class='required-indicator'>*</span>
+                        <g:datePicker name="start_time" value="${new Date()}" precision="minute" relativeYears="${0..7}"/>
+                    </div>
+                    <div class='fieldcontain required'>
+                        <label for='venue'>End Date</label>
+                        <span class='required-indicator'>*</span>
+                        <g:datePicker name="end_time" value="${new Date()}" precision="minute" relativeYears="${0..7}"/>
+                    </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

@@ -20,9 +20,6 @@
             <f:table collection="${artistList}" />
         </div>
 
-            <div class="pagination">
-                <g:paginate total="${artistCount ?: 0}" />
-            </div>
         </div>
     </body>
 </html>

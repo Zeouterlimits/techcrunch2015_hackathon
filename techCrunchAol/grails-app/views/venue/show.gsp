@@ -12,6 +12,7 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
+            <g:if test="${session.Venue}">
 
             <g:form class="venueButtons" resource="${this.venue}" method="DELETE">
                 <fieldset class="">
@@ -25,6 +26,7 @@
                 <button class="btn btn-success" style="margin-left: 3px" name="venue" value="${this.venue.name}">Create Event</button>
             </form>
 
+           </g:if>
         <ol class="property-list venue">
     
         <li class="fieldcontain">
@@ -64,12 +66,13 @@
     
 </ol>
 
-            <div id="map"></div>
+            <div class="venueContainer" id="map"></div>
 
 
 
         </div>
-         <h2>Your Upcoming events</h2>
+        <div class="venueContainer">
+         <h2>Upcoming Events</h2>
             <div class="venueArtistList">
                 <ul class="list-unstyled">
                     <g:each in="${eventList}" var="event">
@@ -89,5 +92,6 @@
                     </g:each>
                 </ul>
             </div>
+        </div>
     </body>
 </html>
