@@ -10,12 +10,16 @@ class QueryParamInterceptor {
     boolean before() {
         println(params)
         println(session)
-        if(params.artistId) {
+        if (params.artistId) {
             session.Artist = true
             session.Venue = false
         }
-        if(params.venueId) {
+        if (params.venueId) {
             session.Venue = true
+            session.Artist = false
+        }
+        if (params.reset) {
+            session.Venue = false
             session.Artist = false
         }
         true

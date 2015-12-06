@@ -61,6 +61,13 @@
             </ul>
             <ul class="nav navbar-nav" style="float:right">
                 <li>
+                    <g:if test="${session.Artist}">
+                        <a href="">I am an artist</a>
+                    </g:if>
+                    <g:if test="${session.Venue}">
+                        <a href="#">I am an venue</a>
+                    </g:if>
+
                 </li>
             </ul>
         </div>
@@ -111,14 +118,15 @@
     <!-- Footer -->
     <footer>
         <div class="row">
-            <div class="col-lg-11">
+            <div class="col-lg-9">
                 <p>Copyright &copy; Hackers</p>
             </div>
-            <div class="col-lg-1">
-                <g:link controller="twilio">test sms</g:link>
-
-                <a href="http://localhost:8080/?artistId=1">C.T.A.</a>
-                <a href="http://localhost:8080/?venueId=1">C.T.V.</a>
+            <div class="col-lg-3">
+                Dev:
+                <g:link controller="twilio">test sms</g:link> |
+                <g:link uri="/" params="[artistId:1]">C.T.A.</g:link> |
+                <g:link uri="/" params="[venueId:1]">C.T.V.</g:link> |
+                <g:link uri="/" params="[reset:1]">reset</g:link>
             </div>
         </div>
     </footer>
