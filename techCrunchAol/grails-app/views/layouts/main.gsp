@@ -61,10 +61,10 @@
             <ul class="nav navbar-nav" style="float:right">
                 <li>
                     <g:if test="${session.Artist}">
-                        <a href="">U2</a>
+                        <g:link uri="/artist/show/1">U2</g:link>
                     </g:if>
                     <g:if test="${session.Venue}">
-                        <a href="#">Brazen Head</a>
+                        <g:link uri="/venue/show/1">Brazen Head</g:link>
                     </g:if>
 
                 </li>
