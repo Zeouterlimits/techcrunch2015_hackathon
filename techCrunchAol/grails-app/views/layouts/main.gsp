@@ -92,9 +92,16 @@
         <div class="col-md-3">
             <p class="lead">Nav</p>
             <div class="list-group">
-                <a href="#" class="list-group-item">Setup Event</a>
-                <a href="#" class="list-group-item">Search Artists</a>
-                <a href="#" class="list-group-item">My Profile</a>
+
+                <g:if test="${session.Artist}">
+                    <g:link uri="/artist/show/1" class="list-group-item">My Profile</g:link>
+
+                </g:if>
+                <g:elseif test="${session.Venue}">
+                    <g:link uri="/event/create" value="${this.venue.name}" class="list-group-item">Setup Event</g:link>
+                    <a href="#" class="list-group-item">Search Artists</a>
+                    <g:link uri="/venue/show/1" class="list-group-item">My Profile</g:link>
+                </g:elseif>
             </div>
         </div>
 
