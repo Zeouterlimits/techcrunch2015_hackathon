@@ -7,13 +7,21 @@
     </head>
     <body>
         <a href="#show-artist" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <img src="${artist.profilePicPath}" height=200/>
         <div id="show-artist" class="content scaffold-show" role="main">
             <h1><g:message code="${artist.name}" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
+            <img class="artistImage" src="${artist.profilePicPath}" height=200/>
             
+            <g:if test="${session.Artist}">
+            <g:form class="eventButtons" resource="${this.artist}" method="DELETE">
+                <fieldset>
+                    <g:link class="btn btn-default" action="edit" resource="${this.artist}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    <input class="btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                </fieldset>
+            </g:form>
+            </g:if>
             
              <ol class="property-list artist">
     
@@ -38,10 +46,6 @@
                  <div class="property-value" aria-labelledby="longitude-label">${artist.longitude}</div>
              </li>
          </g:if>
-             <li class="fieldcontain">
-
-                 <div id="map" data-map_width="600" data-map_height="250"></div>
-             </li>
 
 
 
@@ -86,18 +90,17 @@
         </li>
         </g:if>
 </ol>
+
+         <div id="map" class="venueContainer" data-map_width="600" data-map_height="250"></div>
             
-            
-            
-            <g:form resource="${this.artist}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${this.artist}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
-            </g:form>
+
         </div>
-        
+        <g:if test="${session.Venue}">
+        <h2>Their Upcoming Events</h2>
+        </g:if>
+        <g:if test="${session.Artist}">
         <h2>Your Upcoming Events</h2>
+        </g:if>
             <div class="eventArtistList">
                 <ul class="list-unstyled">
                     <g:each in="${confirmedEvents}" var="event">
@@ -120,8 +123,13 @@
                     </g:each>
                 </ul>
             </div>
-                    
+            
+        <g:if test="${session.Venue}">
+            <h2>Events They Have Applied For</h2>
+        </g:if>
+        <g:if test="${session.Artist}">
             <h2>Events You Have Applied For</h2>
+        </g:if>
 
             <div class="eventArtistList">
                 <ul class="list-unstyled">
@@ -144,8 +152,13 @@
                     </g:each>
                 </ul>
             </div>
-                    
+
+        <g:if test="${session.Venue}">
+        <h2>Events Looking For Them</h2>
+        </g:if>
+        <g:if test="${session.Artist}">
         <h2>Events Looking For You</h2>
+        </g:if>                   
                     <div class="eventArtistList">
                         <ul class="list-unstyled">
                             <g:each in="${eventList}" var="event">
