@@ -43,7 +43,16 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<g:if test="${session.Artist}">
+    <nav class="artistNavbar navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:if>
+<g:elseif test="${session.Venue}">
+    <nav class="venueNavbar navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:elseif>
+<g:else test="${session.Venue}">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+</g:else>
+
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -61,10 +70,10 @@
             <ul class="nav navbar-nav" style="float:right">
                 <li>
                     <g:if test="${session.Artist}">
-                        <a href="">U2</a>
+                        <g:link uri="/artist/show/1">U2</g:link>
                     </g:if>
                     <g:if test="${session.Venue}">
-                        <a href="#">Brazen Head</a>
+                        <g:link uri="/venue/show/1">Brazen Head</g:link>
                     </g:if>
 
                 </li>
