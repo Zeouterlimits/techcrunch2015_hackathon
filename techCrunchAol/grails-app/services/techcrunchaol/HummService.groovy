@@ -15,11 +15,10 @@ class HummService {
     def getArtistList(artist){
         println artist
         HttpResponse<JsonNode> response = Unirest.get("https://humm-api.p.mashape.com/artists?auth=" +
-                AUTH_TOKEN + "&keyword=" + URLEncoder.encode(artist, "UTF-8") + "&limit=20&offset=0")
+                AUTH_TOKEN + "&keyword=" + URLEncoder.encode(artist, "UTF-8") + "&limit=5&offset=0")
                 .header("X-Mashape-Key", MASHAPE_KEY)
                 .header("Accept", "application/json")
                 .asJson()
-        println "Headers == " + response.headers
         JSONObject jsonNode = response.body.getObject()
         return jsonNode.get("data_response")
     }

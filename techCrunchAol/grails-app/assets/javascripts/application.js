@@ -200,7 +200,88 @@ if (typeof jQuery !== 'undefined') {
         });
     }
 
+    function Humm(){
+        var self = this;
+        self.getArtists = function(artist){
+            $("#hummArtistList").empty();
+            if (artist.length < 1){
+                $("#hummArtistList").css("display","none");
+                return;
+            }
+            var artistEncoded = encodeURIComponent(artist);
+            $.getJSON("http://localhost:8080/artist/searchHumm?name="+artistEncoded, function(result){
+                $.each(result, function(i, field){
+                    self.addArtistToList(field);
+                });
+                $( "#hummArtistList li" ).on('click',function(){
+                    self.sendArtistData(this);
+                });
+            });
+        };
+        self.addArtistToList = function(field){
+            var name = field.account.name.first;
+            var photo = field.account.avatar;
+            var bio = field.account.bio;
+            var officalSite;
+            var lastFm;
+            var twitter;
+            var spotify;
 
+            if (typeof(field.urls) === 'undefined') officalSite = "";
+            else if (typeof (field.urls.official_url) === 'undefined') officalSite = "";
+            else officalSite = field.urls.official_url;
+
+            if (typeof(field.urls) === 'undefined') lastFm = "";
+            else if (typeof (field.urls.lastfm_url) === 'undefined') lastFm = "";
+            else lastFm = field.urls.lastfm_url;
+
+            if (typeof(field.urls) === 'undefined') twitter = "";
+            else if (typeof (field.urls.twitter_url) === 'undefined') twitter = "";
+            else twitter = field.urls.twitter_url;
+
+            if (typeof(field.urls) === 'undefined') spotify = "";
+            else if (typeof (field.urls.spotify_url) === 'undefined') spotify = "";
+            else spotify = field.urls.spotify_url;
+
+            $("#hummArtistList").css("display","block");
+            self.makeArtistListDom(name, photo, bio, officalSite, lastFm, twitter, spotify)
+
+        };
+        self.makeArtistListDom = function(name, photo, bio, officalSite, lastFm, twitter, spotify){
+            $("#hummArtistList").append(
+              '<li data-name="'+ name +
+              '" data-photo="' + photo +
+              '" data-bio="' + bio +
+              '" data-url-officalSite="' + officalSite +
+              '" data-url-twitter="' + twitter +
+              '" data-url-spotify="' + spotify +
+              '" data-url-lastFm="' + lastFm + '"><a href="http://localhost:8080/artist/show/1" >' +
+                '<img class="hummArtistPhoto" src="' + photo + '"/>' +
+                '<div class="hummArtistName">'+ name + '</div>' +
+              '</a></li>'
+            );
+        };
+        self.sendArtistData = function(li){
+            var name = $(li).data("name");
+            var photo = $(li).data("photo");
+            var bio = $(li).data("bio");
+            var bioTrim = jQuery.trim(bio).substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
+            var officalSite = $(li).data("url-officalsite");
+            var twitter = $(li).data("url-twitter");
+            var spotify = $(li).data("url-spotify");
+            var lastFm = $(li).data("url-lastfm");
+            $.post( "http://localhost:8080/artist/saveHumm", { name: name, profilePicPath: photo, bio: bioTrim,
+                official: officalSite, lastFm: lastFm, twitter: twitter, spotify: spotify, email: "e",
+                password: "e", location: "e", phoneNumber: "e", username: "e", create: "Create"} );
+        };
+        $(document).ready(function(){
+            $( ".formName" ).on('input',function() {
+                self.getArtists($('.formName').val());
+            });
+        });
+    }
+
+    var humm = Humm();
     var mapquest = MapQuest();
 
 

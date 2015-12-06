@@ -12,7 +12,8 @@ class ArtistController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Artist.list(params), model:[artistCount: Artist.count()]
+        println Artist.list()
+        respond Artist.list(params), model:[artistCount: Artist.count(), artistList:Artist.list()]
     }
 
     def show(Artist artist) {
@@ -32,7 +33,7 @@ class ArtistController {
         render hummService.getArtistList(params.name)
     }
     def createHumm(){
-
+        respond new Artist(params)
     }
 
     @Transactional
@@ -50,6 +51,27 @@ class ArtistController {
         }
 
         artist.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'artist.label', default: 'Artist'), artist.id])
+                redirect artist
+            }
+            '*' { respond artist, [status: CREATED] }
+        }
+    }
+
+    @Transactional
+    def saveHumm() {
+        def artist = new Artist(params)
+
+        for (String key: params.keySet()){
+            if (params.get(key) == null || params.get(key).value == "null")
+                params.put(key, "EMPTY")
+        }
+        //artist.official = "empty"
+        println "Artist == " + artist
+        artist.save failOnError: true
 
         request.withFormat {
             form multipartForm {

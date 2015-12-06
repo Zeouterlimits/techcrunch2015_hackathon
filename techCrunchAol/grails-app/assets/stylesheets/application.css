@@ -18,3 +18,15 @@
 .eventArtistList .eventDate{
     color: #8C8C8C;
 }
+.hummArtistName {
+    height: 50px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 6px;
+}
+img.hummArtistPhoto {
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 6px;
+}
