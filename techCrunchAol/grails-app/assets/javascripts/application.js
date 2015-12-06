@@ -204,12 +204,6 @@ if (typeof jQuery !== 'undefined') {
                 point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }}
                 self.initMap(point);
             }
-            else if(window.location.pathname.indexOf("/artist/show/") >= 0){
-                //show map on the page
-                point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }}
-                self.initMap(point);
-            }
-
         });
     }
 
@@ -292,23 +286,24 @@ if (typeof jQuery !== 'undefined') {
 
         }
 
+        self.initProxMap(point);
 
-        $(document).ready(function(){
 
-
-            if(window.location.pathname.indexOf("/artist/show/") >= 0){
-                //show map on the page
-                point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }}
-                self.initProxMap(point);
-            }
-
-        });
 
     }
 
     var mapquest = MapQuest();
-    //var prox = Proximity();
 
+    $(document).ready(function(){
+
+
+        if(window.location.pathname.indexOf("/artist/show/") >= 0){
+            //show map on the page
+            point = {coords :{latitude : $('div[aria-labelledby=latitude-label]').text(), longitude : $('div[aria-labelledby=longitude-label]').text() }};
+            var prox = Proximity();
+        }
+
+    });
 
 
 
